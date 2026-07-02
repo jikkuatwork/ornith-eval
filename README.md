@@ -41,6 +41,7 @@ Highlights:
 | [`ORNITH_BENCHMARK_REPORT.md`](ORNITH_BENCHMARK_REPORT.md) | Performance, throughput, long-context, tools, and lightweight capability eval. |
 | [`ORNITH_TOUGH_EVAL_REPORT.md`](ORNITH_TOUGH_EVAL_REPORT.md) | Tough mixed-domain eval across math, programming, science, logic, data, and security. |
 | [`ORNITH_CONVERSATION_CONTEXT_EVAL_REPORT.md`](ORNITH_CONVERSATION_CONTEXT_EVAL_REPORT.md) | Long conversational context and memory eval, including the Tom/red-ball/yellow-ox scenario. |
+| [`ORNITH_MODULAR_EVAL_REPORT.md`](ORNITH_MODULAR_EVAL_REPORT.md) | Full run of the modular special-purpose suites. |
 | [`evals/README.md`](evals/README.md) | Modular eval framework and the new special-purpose suites. |
 
 Raw run outputs are under [`benchmark_results/`](benchmark_results/).
@@ -169,7 +170,18 @@ python3 evals/runner.py --suite kerala_core --model ornith:latest
 python3 evals/runner.py --suite deep_convoluted_conversation --model ornith:latest --num-ctx 65536
 ```
 
-Smoke runs for all new suite families passed on limited subsets; outputs are in `benchmark_results/modular_eval_*.{json,md}`.
+Full modular run summary:
+
+| Suite | Result |
+|---|---:|
+| `deep_convoluted_conversation` | 11/11 |
+| `deep_math_puzzles` | 9/10 |
+| `difficult_programming` | 3/8 |
+| `hard_facts` | 12/12 |
+| `kerala_core` | 12/15 |
+| **Combined** | **47/56** |
+
+See [`ORNITH_MODULAR_EVAL_REPORT.md`](ORNITH_MODULAR_EVAL_REPORT.md). Outputs are in `benchmark_results/modular_eval_*.{json,md}`.
 
 ## Repository layout
 

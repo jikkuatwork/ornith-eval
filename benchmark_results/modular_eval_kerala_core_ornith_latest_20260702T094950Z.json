@@ -1,0 +1,439 @@
+{
+  "model": "ornith:latest",
+  "base_url": "http://127.0.0.1:11434",
+  "started_at_utc": "20260702T094950Z",
+  "suite": {
+    "id": "kerala_core",
+    "title": "Kerala-flavoured facts, words, cultural ideas, geography, and history.",
+    "kind": "standard",
+    "defaults": {
+      "think": false,
+      "num_ctx": 8192,
+      "num_predict": 400,
+      "temperature": 0,
+      "seed": 904
+    },
+    "_path": "/home/glasscube/Projects/ornith/evals/suites/kerala_core.json"
+  },
+  "summary": {
+    "pass": 12,
+    "total": 15,
+    "accuracy": 0.8,
+    "by_category": {
+      "geography": {
+        "score": 4.0,
+        "pass": 4,
+        "total": 4
+      },
+      "language": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "culture": {
+        "score": 5.0,
+        "pass": 5,
+        "total": 5
+      },
+      "history": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "malayalam_words": {
+        "score": 0.0,
+        "pass": 0,
+        "total": 3
+      },
+      "society": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      }
+    },
+    "total_wall_s": 53.04294332000245,
+    "mean_wall_s": 3.5361962213334968,
+    "median_wall_s": 3.6586222000005364,
+    "max_prompt_eval_count": 94,
+    "mean_prompt_eval_count": 82.8,
+    "mean_prompt_tps": 771.2733636178077,
+    "mean_eval_tps": 46.792525725706
+  },
+  "rows": [
+    {
+      "id": "capital",
+      "category": "geography",
+      "domain": "kerala_core",
+      "prompt": "What is the capital of Kerala? Answer only the city name.",
+      "response": "Thiruvananthapuram",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='Thiruvananthapuram'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 0.9981259790001786,
+        "prompt_eval_count": 83,
+        "eval_count": 8,
+        "perf": {
+          "load_s": 0.665222194,
+          "prompt_eval_s": 0.111691,
+          "eval_s": 0.159007,
+          "total_s_reported": 0.995428344,
+          "prompt_tps": 743.1216481184697,
+          "eval_tps": 50.312250404070255
+        }
+      }
+    },
+    {
+      "id": "language",
+      "category": "language",
+      "domain": "kerala_core",
+      "prompt": "What is the primary official language of Kerala?",
+      "response": "The primary official language of Kerala is **Malayalam**. It is one of the 22 scheduled languages of India and serves as the main medium of communication, education, and administration in the state.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='The primary official language of Kerala is **Malayalam**. It is one of the 22 scheduled languages of India and serves as the main medium of communication, education, and administration in the state.'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 1.656341435998911,
+        "prompt_eval_count": 79,
+        "eval_count": 42,
+        "perf": {
+          "load_s": 0.664489455,
+          "prompt_eval_s": 0.104683,
+          "eval_s": 0.881374,
+          "total_s_reported": 1.653344166,
+          "prompt_tps": 754.6593047581747,
+          "eval_tps": 47.652869270026116
+        }
+      }
+    },
+    {
+      "id": "district_count",
+      "category": "geography",
+      "domain": "kerala_core",
+      "prompt": "How many districts does Kerala have? Answer with the number.",
+      "response": "Kerala has 14 districts.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "values=[14.0]; expected=14.0; best_abs_err=0.0",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 0.9001837979994889,
+        "prompt_eval_count": 82,
+        "eval_count": 9,
+        "perf": {
+          "load_s": 0.613465727,
+          "prompt_eval_s": 0.106447,
+          "eval_s": 0.175008,
+          "total_s_reported": 0.897608341,
+          "prompt_tps": 770.3364115475307,
+          "eval_tps": 51.426220515633574
+        }
+      }
+    },
+    {
+      "id": "onam_mahabali",
+      "category": "culture",
+      "domain": "kerala_core",
+      "prompt": "Onam is closely associated with the legendary return of which king?",
+      "response": "Onam is closely associated with the legendary return of **King Mahabali** (also spelled Marari or Maveli). According to legend, King Mahabali was a just and benevolent ruler who was loved by his people. The gods, jealous of his popularity, sent Vamana (an avatar of Vishnu) to reclaim the earth from him. After being granted three steps of land, Vamana covered the entire world in two steps and pushed Mahabali into the netherworld with the third step.\n\nEvery year during Onam, it is believed that King Mahabali returns to his kingdom for a day, and people celebrate with feasts (Onasadya), cultural performances, and festivities to welcome him back.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "hits=['Mahabali', 'Maveli']; expected_any=['Mahabali', 'Maveli']; response='Onam is closely associated with the legendary return of **King Mahabali** (also spelled Marari or Maveli). According to legend, King Mahabali was a just and benevolent ruler who was loved by his people. The gods, jealous'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 3.9886940619999223,
+        "prompt_eval_count": 83,
+        "eval_count": 151,
+        "perf": {
+          "load_s": 0.636906524,
+          "prompt_eval_s": 0.105085,
+          "eval_s": 3.240542,
+          "total_s_reported": 3.98556262,
+          "prompt_tps": 789.8367987819385,
+          "eval_tps": 46.59714331738333
+        }
+      }
+    },
+    {
+      "id": "onam_pookkalam_sadya",
+      "category": "culture",
+      "domain": "kerala_core",
+      "prompt": "Name two common Onam traditions: one floral decoration and one feast.",
+      "response": "Two common Onam traditions are:\n\n1. **Floral Decoration**: *Pookkalam* — a traditional flower carpet made with colorful flowers, leaves, and rice grains, displayed at homes and public spaces during Onam.\n\n2. **Feast**: *Onasadya* (or *Sadhya*) — a grand vegetarian feast served on banana leaves, featuring dishes like *avial*, *thoran*, *puttu*, *kappa*, *mezhukkupuratti*, and sweet rice (*payasam*).",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing_slots=[]; response='Two common Onam traditions are:\\n\\n1. **Floral Decoration**: *Pookkalam* — a traditional flower carpet made with colorful flowers, leaves, and rice grains, displayed at homes and public spaces during Onam.\\n\\n2. **Feast**: *Onasadya* (or *Sadhya*) — a grand vegeta'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 3.311281507001695,
+        "prompt_eval_count": 84,
+        "eval_count": 113,
+        "perf": {
+          "load_s": 0.686941884,
+          "prompt_eval_s": 0.107008,
+          "eval_s": 2.448728,
+          "total_s_reported": 3.308275872,
+          "prompt_tps": 784.9880382775119,
+          "eval_tps": 46.14640744092443
+        }
+      }
+    },
+    {
+      "id": "vallam_kali",
+      "category": "culture",
+      "domain": "kerala_core",
+      "prompt": "What is Vallam Kali in Kerala?",
+      "response": "Vallam Kali (boat race) is a traditional competitive boat racing event held in the backwaters of Kerala, India. Here are the key aspects:\n\n**History & Origins:**\n- Dates back to at least 10th century CE\n- Originally connected to temple festivals and harvest celebrations\n- The most famous tradition is associated with the annual Thrissur Pooram festival (May-June)\n\n**Types of Races:**\n- **Chundan Vallam**: Long traditional snake boats (up to 144 feet/44m), used in major festivals like Thrissur Pooram, Nehru Trophy Boat Race at Kumarakom, and other events\n- **Kettu Vallam**: Shorter racing boats with multiple rowers\n\n**Key Events:**\n- **Nehru Trophy Boat Race** (August) - held annually on the Ashtamudi Lake in Kollam district; one of India's most popular sporting events\n- **Thrissur Pooram** - features elaborate snake boat processions and races as part of the grand temple festival\n\n**Cultural Significance:**\n- Deeply rooted in Kerala's maritime heritage and Hindu temple traditions\n- The boats are decorated with colorful flags, flowers, and traditional ornaments\n- Accompanied by traditional music (Chenda melam) and enthusiastic crowds\n- Represents community spirit and regional pride\n\nThe Vallam Kali is not just a sport but an integral part of Kerala's cultural identity, combining athletic competition with rich religious and artistic traditions.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='Vallam Kali (boat race) is a traditional competitive boat racing event held in the backwaters of Kerala, India. Here are the key aspects:\\n\\n**History & Origins:**\\n- Dates back to at least 10th century CE\\n- Originally conn'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 7.732345374000943,
+        "prompt_eval_count": 78,
+        "eval_count": 311,
+        "perf": {
+          "load_s": 0.651312669,
+          "prompt_eval_s": 0.105684,
+          "eval_s": 6.906737,
+          "total_s_reported": 7.728332265,
+          "prompt_tps": 738.0492789826275,
+          "eval_tps": 45.028498985845275
+        }
+      }
+    },
+    {
+      "id": "sree_narayana_guru",
+      "category": "history",
+      "domain": "kerala_core",
+      "prompt": "Which Kerala social reformer is associated with the message 'One caste, one religion, one God for humankind/man'?",
+      "response": "The Kerala social reformer associated with the message **\"One caste, one religion, one God for humankind\"** (or \"man\") is **Sree Narayana Guru** (1854–1928).\n\nHe was a prominent social reformer from North Malabar who championed the cause of equality among all castes and religions. His famous declaration at the Thiruvananthapuram temple in 1888 — *\"One caste, one religion for mankind\"* (or \"man\") — became his life's motto and a rallying cry against the caste system and religious discrimination in Kerala.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='The Kerala social reformer associated with the message **\"One caste, one religion, one God for humankind\"** (or \"man\") is **Sree Narayana Guru** (1854–1928).\\n\\nHe was a prominent social reformer from North Malabar who cha'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 3.6586222000005364,
+        "prompt_eval_count": 94,
+        "eval_count": 128,
+        "perf": {
+          "load_s": 0.681474855,
+          "prompt_eval_s": 0.113006,
+          "eval_s": 2.774879,
+          "total_s_reported": 3.655362541,
+          "prompt_tps": 831.8142399518609,
+          "eval_tps": 46.12813747914774
+        }
+      }
+    },
+    {
+      "id": "vembanad",
+      "category": "geography",
+      "domain": "kerala_core",
+      "prompt": "What is the largest lake in Kerala, famous for backwaters?",
+      "response": "The largest lake in Kerala, famous for its extensive network of canals and waterways known as the **backwaters**, is **Vembanad Lake** (also called Vembanad-Kol wetland). It spans approximately 209 km² and forms a significant part of Kerala's backwater system.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='The largest lake in Kerala, famous for its extensive network of canals and waterways known as the **backwaters**, is **Vembanad Lake** (also called Vembanad-Kol wetland). It spans approximately 209 km² and forms a signif'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 2.2015472250004677,
+        "prompt_eval_count": 83,
+        "eval_count": 66,
+        "perf": {
+          "load_s": 0.606520914,
+          "prompt_eval_s": 0.105774,
+          "eval_s": 1.40759,
+          "total_s_reported": 2.199034004,
+          "prompt_tps": 784.6918902565848,
+          "eval_tps": 46.88865365624934
+        }
+      }
+    },
+    {
+      "id": "munnar_district",
+      "category": "geography",
+      "domain": "kerala_core",
+      "prompt": "Munnar is in which Kerala district?",
+      "response": "Munnar is in **Idukki** district of Kerala.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='Munnar is in **Idukki** district of Kerala.'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 1.079946101999667,
+        "prompt_eval_count": 79,
+        "eval_count": 15,
+        "perf": {
+          "load_s": 0.609457691,
+          "prompt_eval_s": 0.106298,
+          "eval_s": 0.300314,
+          "total_s_reported": 1.077726603,
+          "prompt_tps": 743.1936630980828,
+          "eval_tps": 49.94772138495041
+        }
+      }
+    },
+    {
+      "id": "kalaripayattu",
+      "category": "culture",
+      "domain": "kerala_core",
+      "prompt": "What is Kalaripayattu?",
+      "response": "Kalaripayattu (കലാപയുദ്ധം) is one of the oldest known martial arts in the world, originating from Kerala, India. It translates to \"the art of war\" or \"the science of combat.\"\n\n**Key characteristics:**\n\n- **Ancient origins**: Practiced for over 2,000 years\n- **Comprehensive system**: Includes strikes, kicks, joint locks, throws, weapon training (spear, sword, staff), and healing arts\n- **Unique features**: Uses coconut oil as a lubricant instead of wrestling mats; incorporates yoga-like flexibility exercises\n- **Cultural significance**: Recognized by UNESCO as an Intangible Cultural Heritage of Humanity in 2020\n\nIt's considered one of the earliest documented martial arts systems, predating many others by centuries.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing_slots=[]; response='Kalaripayattu (കലാപയുദ്ധം) is one of the oldest known martial arts in the world, originating from Kerala, India. It translates to \"the art of war\" or \"the science of combat.\"\\n\\n**Key characteristics:**\\n\\n- **Ancient origins**: Practiced for over 2,000 years\\n- **'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 4.4754258490011125,
+        "prompt_eval_count": 77,
+        "eval_count": 170,
+        "perf": {
+          "load_s": 0.619337494,
+          "prompt_eval_s": 0.104091,
+          "eval_s": 3.746692,
+          "total_s_reported": 4.472658944,
+          "prompt_tps": 739.7373452075587,
+          "eval_tps": 45.37335868547508
+        }
+      }
+    },
+    {
+      "id": "vellam_word",
+      "category": "malayalam_words",
+      "domain": "kerala_core",
+      "prompt": "In Malayalam, what does 'vellam' usually mean?",
+      "response": "In Malayalam, **വെള്ലം** (vellam) typically means **\"morning\"** or **\"dawn\"**. It refers to the early part of the day when the sun rises.\n\nFor example:\n- *പ്രഭാത വെള്ലം* — morning dawn  \n- *വെള്ലം നേരം* — in the morning  \n\nIt can also be used poetically or metaphorically to denote clarity, brightness, or a new beginning (similar to how \"dawn\" symbolizes hope).",
+      "score": 0.0,
+      "pass": false,
+      "detail": "missing=['water']; response='In Malayalam, **വെള്ലം** (vellam) typically means **\"morning\"** or **\"dawn\"**. It refers to the early part of the day when the sun rises.\\n\\nFor example:\\n- *പ്രഭാത വെള്ലം* — morning dawn  \\n- *വെള്ലം നേരം* — in the morning '",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 3.3849750970002788,
+        "prompt_eval_count": 83,
+        "eval_count": 116,
+        "perf": {
+          "load_s": 0.658944921,
+          "prompt_eval_s": 0.105756,
+          "eval_s": 2.537918,
+          "total_s_reported": 3.381669772,
+          "prompt_tps": 784.8254472559477,
+          "eval_tps": 45.70675648306998
+        }
+      }
+    },
+    {
+      "id": "nanni_word",
+      "category": "malayalam_words",
+      "domain": "kerala_core",
+      "prompt": "What does the Malayalam word 'nanni' mean in English?",
+      "response": "The Malayalam word **\"നന്നി\"** (transliterated as *nanni*) means **\"good\"** or **\"well\"** in English, depending on context. It is derived from the root word **നന്‍** (*nan*), which conveys goodness, virtue, or excellence.\n\nFor example:\n- **നന്നായ്‌ വളരുക** → \"to grow well\" (literally: \"to grow good\")\n- **നന്നി** can also be used in phrases like **\"നന്നിയിൽ\"** meaning \"in a good manner.\"\n\nLet me know if you'd like more examples!",
+      "score": 0.0,
+      "pass": false,
+      "detail": "hits=[]; expected_any=['thank', 'thanks', 'thank you']; response='The Malayalam word **\"നന്നി\"** (transliterated as *nanni*) means **\"good\"** or **\"well\"** in English, depending on context. It is derived from the root word **നന്\\u200d** (*nan*), which conveys goodness, virtue, or excellence'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 3.726348825999594,
+        "prompt_eval_count": 84,
+        "eval_count": 131,
+        "perf": {
+          "load_s": 0.646146343,
+          "prompt_eval_s": 0.109117,
+          "eval_s": 2.887183,
+          "total_s_reported": 3.723320031,
+          "prompt_tps": 769.8158857006699,
+          "eval_tps": 45.37294657110409
+        }
+      }
+    },
+    {
+      "id": "sukhamano_phrase",
+      "category": "malayalam_words",
+      "domain": "kerala_core",
+      "prompt": "What does 'sukhamano?' roughly mean in Malayalam?",
+      "response": "The word \"sukhamano\" doesn't appear to be a standard Malayalam word. Let me think about this more carefully.\n\nIn Malayalam, the closest common words would be:\n- **സുഖം** (sukham) - meaning \"comfort,\" \"pleasure,\" or \"well-being\"\n- **മനസ്സ്** (manassu) - meaning \"mind\" or \"heart\"\n\nSo \"sukhamano\" could potentially be a transliteration of:\n1. **സുഖമനോ** (sukhamano) - combining സുഖം + മനോ, roughly meaning \"comfortable mind\" or \"peaceful state of mind\"\n2. It might also be a misspelling/transliteration of **സുഖമാണ്** (sukhamāṇu) which means \"it is comfortable/pleasant\"\n\nThe most likely interpretation: **\"sukhamano\"** roughly translates to something like **\"comfortable\"** or **\"at ease\"** in Malayalam, derived from സുഖം (comfort/well-being).",
+      "score": 0.0,
+      "pass": false,
+      "detail": "hits=[]; expected_any=['are you well', 'how are you', 'are you fine']; response='The word \"sukhamano\" doesn\\'t appear to be a standard Malayalam word. Let me think about this more carefully.\\n\\nIn Malayalam, the closest common words would be:\\n- **സുഖം** (sukham) - meaning \"comfort,\" \"pleasure,\" or \"well'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 6.005627438998999,
+        "prompt_eval_count": 84,
+        "eval_count": 231,
+        "perf": {
+          "load_s": 0.690083265,
+          "prompt_eval_s": 0.107056,
+          "eval_s": 5.140962,
+          "total_s_reported": 6.002748999,
+          "prompt_tps": 784.6360783141533,
+          "eval_tps": 44.933224559916994
+        }
+      }
+    },
+    {
+      "id": "kudumbashree",
+      "category": "society",
+      "domain": "kerala_core",
+      "prompt": "What is Kudumbashree in Kerala known for?",
+      "response": "Kudumbashree is a women's self-help group movement in Kerala, India, launched by the state government in 1998 under the leadership of Chief Minister K. Karunakaran. It is known for:\n\n- **Empowering rural women** through microfinance and financial literacy programs\n- **Creating income-generating activities** like thrift groups (Kudumbashree Thrift Groups) where women pool savings and receive loans\n- **Promoting entrepreneurship** among women in rural areas across Kerala\n- **Building a vast network** of over 1.5 million women organized into self-help groups, federations, and district-level bodies\n- **Implementing community development projects** including housing, sanitation, health awareness, and education initiatives\n\nIt's considered one of the most successful grassroots movements for women's empowerment in India.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing_slots=[]; response=\"Kudumbashree is a women's self-help group movement in Kerala, India, launched by the state government in 1998 under the leadership of Chief Minister K. Karunakaran. It is known for:\\n\\n- **Empowering rural women** through microfinance and financial literacy prog\"",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 4.667636718000722,
+        "prompt_eval_count": 81,
+        "eval_count": 172,
+        "perf": {
+          "load_s": 0.671769599,
+          "prompt_eval_s": 0.104589,
+          "eval_s": 3.806723,
+          "total_s_reported": 4.664068734,
+          "prompt_tps": 774.4600292573789,
+          "eval_tps": 45.18321926759578
+        }
+      }
+    },
+    {
+      "id": "vishu_kani",
+      "category": "culture",
+      "domain": "kerala_core",
+      "prompt": "In the Kerala festival Vishu, what does 'Vishukkani' refer to?",
+      "response": "**Vishukkani** refers to a traditional arrangement placed on the **Vishukkal** (the ceremonial table) during the Malayali New Year celebration of **Vishu** in Kerala. It is a symbolic collection of auspicious items believed to bring prosperity and good fortune for the coming year.\n\nThe typical components include:\n- A **coconut** (whole, unbroken)\n- **Betel leaves** (fresh)\n- **Mango leaves** (fresh, usually from a mango tree)\n- **Kumkum** (vermilion powder)\n- **Gold coins** or gold jewelry (symbolizing wealth)\n- A **banana leaf** (as the base)\n\nThe arrangement is placed in front of the person waking up on Vishu day. The first thing they see upon opening their eyes should be the Vishukkani, and it is believed that whatever is seen first determines the fortune of the year ahead.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "hits=['arrangement', 'seen first']; expected_any=['first sight', 'auspicious sight', 'arrangement', 'seen first']; response='**Vishukkani** refers to a traditional arrangement placed on the **Vishukkal** (the ceremonial table) during the Malayali New Year celebration of **Vishu** in Kerala. It is a symbolic collection of auspicious items belie'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 5.255841707999934,
+        "prompt_eval_count": 88,
+        "eval_count": 198,
+        "perf": {
+          "load_s": 0.677100942,
+          "prompt_eval_s": 0.113558,
+          "eval_s": 4.381454,
+          "total_s_reported": 5.252500157,
+          "prompt_tps": 774.9343947586256,
+          "eval_tps": 45.1904778641976
+        }
+      }
+    }
+  ]
+}

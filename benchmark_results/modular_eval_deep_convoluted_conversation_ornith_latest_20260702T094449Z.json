@@ -1,0 +1,401 @@
+{
+  "model": "ornith:latest",
+  "base_url": "http://127.0.0.1:11434",
+  "started_at_utc": "20260702T094449Z",
+  "suite": {
+    "id": "deep_convoluted_conversation",
+    "title": "Deep, convoluted long-conversation memory with corrections, rumors, ownership transfers, and distractors.",
+    "kind": "conversation",
+    "turns": 1200,
+    "seed": 20260704,
+    "assistant_ack": "Noted.",
+    "system": "You are in a long natural conversation. Remember facts, corrections, and ownership transfers. Later side stories, jokes, rumors, and unrelated similar names/colors are distractors. When asked a memory question, answer briefly and use the latest real update.",
+    "defaults": {
+      "think": false,
+      "num_ctx": 65536,
+      "num_predict": 128,
+      "temperature": 0,
+      "seed": 905
+    },
+    "_path": "/home/glasscube/Projects/ornith/evals/suites/deep_convoluted_conversation.json"
+  },
+  "summary": {
+    "pass": 11,
+    "total": 11,
+    "accuracy": 1.0,
+    "by_category": {
+      "early_story_binding": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "state_update": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "ownership_transfer": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "container_reasoning": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "instruction_memory": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "numeric_update": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "multi_attribute_update": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "multi_hop_relation": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "decoy_resistance": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "late_composite": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "ultra_late_coreference": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      }
+    },
+    "total_wall_s": 52.69315254399953,
+    "mean_wall_s": 4.790286594909048,
+    "median_wall_s": 5.604486406999058,
+    "max_prompt_eval_count": 50158,
+    "mean_prompt_eval_count": 24185.363636363636,
+    "mean_prompt_tps": 7715.114156027483,
+    "mean_eval_tps": 52.14191615035744
+  },
+  "rows": [
+    {
+      "id": "tom_ball_after_many_decoys",
+      "category": "early_story_binding",
+      "domain": "conversation",
+      "after_turn": 150,
+      "fact_turn": 2,
+      "turn_gap": 148,
+      "question": "Memory check: what color was Tom's ball? One word.",
+      "response": "Red.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "expected='red'; got='Red'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 7.712681495000652,
+        "prompt_eval_count": 6116,
+        "eval_count": 3,
+        "perf": {
+          "load_s": 3.796705162,
+          "prompt_eval_s": 3.822153,
+          "eval_s": 0.05079,
+          "total_s_reported": 7.710649488,
+          "prompt_tps": 1600.1452584446515,
+          "eval_tps": 59.06674542232723
+        }
+      }
+    },
+    {
+      "id": "maya_key_after_correction",
+      "category": "state_update",
+      "domain": "conversation",
+      "after_turn": 230,
+      "fact_turn": 131,
+      "turn_gap": 99,
+      "question": "Where is Maya's brass key now?",
+      "response": "In the green drawer.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='In the green drawer.'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 2.9434444250000524,
+        "prompt_eval_count": 9417,
+        "eval_count": 6,
+        "perf": {
+          "load_s": 0.601593891,
+          "prompt_eval_s": 2.170211,
+          "eval_s": 0.112807,
+          "total_s_reported": 2.94201138,
+          "prompt_tps": 4339.209413278248,
+          "eval_tps": 53.18818867623463
+        }
+      }
+    },
+    {
+      "id": "compass_current_holder",
+      "category": "ownership_transfer",
+      "domain": "conversation",
+      "after_turn": 260,
+      "fact_turn": 213,
+      "turn_gap": 47,
+      "question": "Who currently has the copper compass?",
+      "response": "Priya.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='Priya.'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 1.5397294550002698,
+        "prompt_eval_count": 10675,
+        "eval_count": 4,
+        "perf": {
+          "load_s": 0.512299494,
+          "prompt_eval_s": 0.875411,
+          "eval_s": 0.070809,
+          "total_s_reported": 1.538205026,
+          "prompt_tps": 12194.272176154971,
+          "eval_tps": 56.489994209775595
+        }
+      }
+    },
+    {
+      "id": "map_owner_from_box",
+      "category": "container_reasoning",
+      "domain": "conversation",
+      "after_turn": 330,
+      "fact_turn": 277,
+      "turn_gap": 53,
+      "question": "Who has the map now, using Nina's box facts?",
+      "response": "Omar.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='Omar.'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 2.688600753001083,
+        "prompt_eval_count": 13581,
+        "eval_count": 4,
+        "perf": {
+          "load_s": 0.52040962,
+          "prompt_eval_s": 1.996992,
+          "eval_s": 0.06989,
+          "total_s_reported": 2.687073499,
+          "prompt_tps": 6800.728295356215,
+          "eval_tps": 57.232794391186154
+        }
+      }
+    },
+    {
+      "id": "monsoon_gate_phrase",
+      "category": "instruction_memory",
+      "domain": "conversation",
+      "after_turn": 380,
+      "fact_turn": 312,
+      "turn_gap": 68,
+      "question": "monsoon gate",
+      "response": "coconut lamp",
+      "score": 1.0,
+      "pass": true,
+      "detail": "expected='coconut lamp'; got='coconut lamp'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 2.26177993499914,
+        "prompt_eval_count": 15643,
+        "eval_count": 4,
+        "perf": {
+          "load_s": 0.550548169,
+          "prompt_eval_s": 1.471314,
+          "eval_s": 0.070372,
+          "total_s_reported": 2.259854642,
+          "prompt_tps": 10631.992898864552,
+          "eval_tps": 56.840788950150625
+        }
+      }
+    },
+    {
+      "id": "vault_current_code",
+      "category": "numeric_update",
+      "domain": "conversation",
+      "after_turn": 540,
+      "fact_turn": 510,
+      "turn_gap": 30,
+      "question": "What is the current archive vault code?",
+      "response": "9134.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "values=[9134.0]; expected=9134.0; best_abs_err=0.0",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 5.604486406999058,
+        "prompt_eval_count": 22310,
+        "eval_count": 6,
+        "perf": {
+          "load_s": 0.484438798,
+          "prompt_eval_s": 4.80129,
+          "eval_s": 0.122605,
+          "total_s_reported": 5.602971696,
+          "prompt_tps": 4646.667874675348,
+          "eval_tps": 48.93764528363443
+        }
+      }
+    },
+    {
+      "id": "archive_token_current_combo",
+      "category": "multi_attribute_update",
+      "domain": "conversation",
+      "after_turn": 610,
+      "fact_turn": 562,
+      "turn_gap": 48,
+      "question": "Give the archive token's current shape, material, weight, and location.",
+      "response": "Hexagonal, copper, 7 grams, under the orchid pot.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing_slots=[]; response='Hexagonal, copper, 7 grams, under the orchid pot.'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 3.33418781599903,
+        "prompt_eval_count": 25237,
+        "eval_count": 16,
+        "perf": {
+          "load_s": 0.489801435,
+          "prompt_eval_s": 2.20578,
+          "eval_s": 0.35469,
+          "total_s_reported": 3.331502823,
+          "prompt_tps": 11441.304209848671,
+          "eval_tps": 45.109814203952745
+        }
+      }
+    },
+    {
+      "id": "mentor_codeword_multihop",
+      "category": "multi_hop_relation",
+      "domain": "conversation",
+      "after_turn": 760,
+      "fact_turn": 159,
+      "turn_gap": 601,
+      "question": "What is the codeword of Nora's mentor?",
+      "response": "Glacier.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='Glacier.'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 5.8310324829999445,
+        "prompt_eval_count": 31523,
+        "eval_count": 4,
+        "perf": {
+          "load_s": 0.594829571,
+          "prompt_eval_s": 4.805385,
+          "eval_s": 0.077597,
+          "total_s_reported": 5.828125426,
+          "prompt_tps": 6559.932242681907,
+          "eval_tps": 51.54838460249752
+        }
+      }
+    },
+    {
+      "id": "tom_animal_after_false_ox",
+      "category": "decoy_resistance",
+      "domain": "conversation",
+      "after_turn": 930,
+      "fact_turn": 2,
+      "turn_gap": 928,
+      "question": "In Tom's old story, what animal did he see and what color was it?",
+      "response": "Yellow ox.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='Yellow ox.'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 6.729941521000001,
+        "prompt_eval_count": 38593,
+        "eval_count": 4,
+        "perf": {
+          "load_s": 0.493737001,
+          "prompt_eval_s": 5.718837,
+          "eval_s": 0.078661,
+          "total_s_reported": 6.725827952,
+          "prompt_tps": 6748.400068055796,
+          "eval_tps": 50.85112063157092
+        }
+      }
+    },
+    {
+      "id": "late_composite_all",
+      "category": "late_composite",
+      "domain": "conversation",
+      "after_turn": 1030,
+      "fact_turn": 2,
+      "turn_gap": 1028,
+      "question": "List these remembered values: Tom ball color; Tom animal/color; current vault code; Maya key location; current compass holder; monsoon-gate phrase; archive token current shape/material/weight/location.",
+      "response": "- **Tom's ball**: Red\n- **Tom's animal**: Yellow ox\n- **Vault code**: 9134\n- **Maya's brass key**: Green drawer\n- **Compass holder**: Priya\n- **Monsoon-gate phrase**: Coconut lamp\n- **Archive token**: Hexagonal, copper, 7 grams, under the orchid pot",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing_slots=[]; response=\"- **Tom's ball**: Red\\n- **Tom's animal**: Yellow ox\\n- **Vault code**: 9134\\n- **Maya's brass key**: Green drawer\\n- **Compass holder**: Priya\\n- **Monsoon-gate phrase**: Coconut lamp\\n- **Archive token**: Hexagonal, copper, 7 grams, under the orchid pot\"",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 6.5195241540004645,
+        "prompt_eval_count": 42786,
+        "eval_count": 79,
+        "perf": {
+          "load_s": 0.543166393,
+          "prompt_eval_s": 3.533447,
+          "eval_s": 1.97549,
+          "total_s_reported": 6.517190902,
+          "prompt_tps": 12108.855743414293,
+          "eval_tps": 39.990078410925896
+        }
+      }
+    },
+    {
+      "id": "ferry_coreference_ultralate",
+      "category": "ultra_late_coreference",
+      "domain": "conversation",
+      "after_turn": 1200,
+      "fact_turn": 37,
+      "turn_gap": 1163,
+      "question": "Who boarded the ferry with the indigo shawl?",
+      "response": "Dev.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='Dev.'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 7.527744099999836,
+        "prompt_eval_count": 50158,
+        "eval_count": 3,
+        "perf": {
+          "load_s": 0.478913956,
+          "prompt_eval_s": 6.434846,
+          "eval_s": 0.055243,
+          "total_s_reported": 7.522796329,
+          "prompt_tps": 7794.7475355276565,
+          "eval_tps": 54.30552287167605
+        }
+      }
+    }
+  ]
+}

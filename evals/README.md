@@ -137,16 +137,23 @@ Available grader types:
 
 `python_unittest` extracts Python code from Markdown fences if needed, appends the suite's tests, and runs the candidate in a temporary directory with a timeout. Treat these as local trusted evals; do not add tests that access secrets, networks, or destructive filesystem paths.
 
-## Smoke validation performed
+## Full-run result on `ornith:latest`
 
-The framework was smoke-tested against `ornith:latest` with limited runs:
+The full suite set was run with:
 
-| Suite | Limit | Result |
-|---|---:|---:|
-| `kerala_core` | 3 | 3/3 |
-| `deep_math_puzzles` | 2 | 2/2 |
-| `difficult_programming` | 1 | 1/1 |
-| `deep_convoluted_conversation` | 2 probes | 2/2 |
-| `hard_facts` | 3 | 3/3 |
+```bash
+python3 evals/runner.py --suite all --model ornith:latest
+```
 
-Raw smoke outputs are in `benchmark_results/` with `modular_eval_...` filenames.
+| Suite | Result | Notes |
+|---|---:|---|
+| `deep_convoluted_conversation` | 11/11 | Strong long-context recall to 50k prompt tokens. |
+| `deep_math_puzzles` | 9/10 | One counting problem failed/truncated. |
+| `difficult_programming` | 3/8 | One-shot complex code generation is the weakest area. |
+| `hard_facts` | 12/12 | Strong on this factual sample. |
+| `kerala_core` | 12/15 | Strong culture/geography; weak Malayalam transliteration words. |
+| **Combined** | **47/56** | **83.9%** |
+
+See `ORNITH_MODULAR_EVAL_REPORT.md` and `benchmark_results/modular_eval_*20260702T094*.{json,md}` for full details.
+
+Earlier smoke outputs are also retained in `benchmark_results/`.

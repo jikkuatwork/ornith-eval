@@ -1,0 +1,210 @@
+{
+  "id": "kerala_core",
+  "title": "Kerala-flavoured facts, words, cultural ideas, geography, and history.",
+  "kind": "standard",
+  "defaults": {
+    "think": false,
+    "num_ctx": 8192,
+    "num_predict": 400,
+    "temperature": 0,
+    "seed": 904
+  },
+  "cases": [
+    {
+      "id": "capital",
+      "category": "geography",
+      "prompt": "What is the capital of Kerala? Answer only the city name.",
+      "grader": {
+        "type": "contains_all",
+        "terms": [
+          "Thiruvananthapuram"
+        ]
+      }
+    },
+    {
+      "id": "language",
+      "category": "language",
+      "prompt": "What is the primary official language of Kerala?",
+      "grader": {
+        "type": "contains_all",
+        "terms": [
+          "Malayalam"
+        ]
+      }
+    },
+    {
+      "id": "district_count",
+      "category": "geography",
+      "prompt": "How many districts does Kerala have? Answer with the number.",
+      "grader": {
+        "type": "numeric",
+        "value": 14,
+        "tolerance": 0
+      }
+    },
+    {
+      "id": "onam_mahabali",
+      "category": "culture",
+      "prompt": "Onam is closely associated with the legendary return of which king?",
+      "grader": {
+        "type": "contains_any",
+        "terms": [
+          "Mahabali",
+          "Maveli"
+        ]
+      }
+    },
+    {
+      "id": "onam_pookkalam_sadya",
+      "category": "culture",
+      "prompt": "Name two common Onam traditions: one floral decoration and one feast.",
+      "grader": {
+        "type": "combo",
+        "slots": {
+          "floral": [
+            "pookkalam",
+            "pookalam"
+          ],
+          "feast": [
+            "sadya",
+            "onasadya",
+            "sadhya"
+          ]
+        }
+      }
+    },
+    {
+      "id": "vallam_kali",
+      "category": "culture",
+      "prompt": "What is Vallam Kali in Kerala?",
+      "grader": {
+        "type": "contains_all",
+        "terms": [
+          "boat",
+          "race"
+        ]
+      }
+    },
+    {
+      "id": "sree_narayana_guru",
+      "category": "history",
+      "prompt": "Which Kerala social reformer is associated with the message 'One caste, one religion, one God for humankind/man'?",
+      "grader": {
+        "type": "contains_all",
+        "terms": [
+          "Narayana",
+          "Guru"
+        ]
+      }
+    },
+    {
+      "id": "vembanad",
+      "category": "geography",
+      "prompt": "What is the largest lake in Kerala, famous for backwaters?",
+      "grader": {
+        "type": "contains_all",
+        "terms": [
+          "Vembanad"
+        ]
+      }
+    },
+    {
+      "id": "munnar_district",
+      "category": "geography",
+      "prompt": "Munnar is in which Kerala district?",
+      "grader": {
+        "type": "contains_all",
+        "terms": [
+          "Idukki"
+        ]
+      }
+    },
+    {
+      "id": "kalaripayattu",
+      "category": "culture",
+      "prompt": "What is Kalaripayattu?",
+      "grader": {
+        "type": "combo",
+        "slots": {
+          "martial": [
+            "martial"
+          ],
+          "art": [
+            "art"
+          ]
+        }
+      }
+    },
+    {
+      "id": "vellam_word",
+      "category": "malayalam_words",
+      "prompt": "In Malayalam, what does 'vellam' usually mean?",
+      "grader": {
+        "type": "contains_all",
+        "terms": [
+          "water"
+        ]
+      }
+    },
+    {
+      "id": "nanni_word",
+      "category": "malayalam_words",
+      "prompt": "What does the Malayalam word 'nanni' mean in English?",
+      "grader": {
+        "type": "contains_any",
+        "terms": [
+          "thank",
+          "thanks",
+          "thank you"
+        ]
+      }
+    },
+    {
+      "id": "sukhamano_phrase",
+      "category": "malayalam_words",
+      "prompt": "What does 'sukhamano?' roughly mean in Malayalam?",
+      "grader": {
+        "type": "contains_any",
+        "terms": [
+          "are you well",
+          "how are you",
+          "are you fine"
+        ]
+      }
+    },
+    {
+      "id": "kudumbashree",
+      "category": "society",
+      "prompt": "What is Kudumbashree in Kerala known for?",
+      "grader": {
+        "type": "combo",
+        "slots": {
+          "women": [
+            "women",
+            "woman"
+          ],
+          "self_help": [
+            "self-help",
+            "self help",
+            "poverty",
+            "community"
+          ]
+        }
+      }
+    },
+    {
+      "id": "vishu_kani",
+      "category": "culture",
+      "prompt": "In the Kerala festival Vishu, what does 'Vishukkani' refer to?",
+      "grader": {
+        "type": "contains_any",
+        "terms": [
+          "first sight",
+          "auspicious sight",
+          "arrangement",
+          "seen first"
+        ]
+      }
+    }
+  ]
+}

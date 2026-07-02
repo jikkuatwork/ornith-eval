@@ -1,0 +1,64 @@
+{
+  "model": "ornith:latest",
+  "base_url": "http://127.0.0.1:11434",
+  "started_at_utc": "20260702T091712Z",
+  "suite": {
+    "id": "difficult_programming",
+    "title": "Difficult executable Python programming tasks graded by hidden-ish unit tests.",
+    "kind": "standard",
+    "defaults": {
+      "think": false,
+      "num_ctx": 8192,
+      "num_predict": 1800,
+      "temperature": 0,
+      "seed": 902
+    },
+    "_path": "/home/glasscube/Projects/ornith/evals/suites/difficult_programming.json"
+  },
+  "summary": {
+    "pass": 1,
+    "total": 1,
+    "accuracy": 1.0,
+    "by_category": {
+      "graphs": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      }
+    },
+    "total_wall_s": 5.005940909000856,
+    "mean_wall_s": 5.005940909000856,
+    "median_wall_s": 5.005940909000856,
+    "max_prompt_eval_count": 113,
+    "mean_prompt_eval_count": 113,
+    "mean_prompt_tps": 942.4363229971143,
+    "mean_eval_tps": 48.14579985383797
+  },
+  "rows": [
+    {
+      "id": "dijkstra_path_reconstruction",
+      "category": "graphs",
+      "domain": "difficult_programming",
+      "prompt": "Return only Python code. Define dijkstra_path(graph, start, goal). graph maps nodes to lists of (neighbor, weight). Return (distance, path). If unreachable, return (float('inf'), []).",
+      "response": "```python\ndef dijkstra_path(graph, start, goal):\n    import heapq\n    \n    dist = {start: 0}\n    prev = {}\n    heap = [(0, start)]\n    \n    while heap:\n        d, u = heapq.heappop(heap)\n        if u == goal:\n            break\n        for v, w in graph.get(u, []):\n            nd = d + w\n            if v not in dist or nd < dist[v]:\n                dist[v] = nd\n                prev[v] = u\n                heapq.heappush(heap, (nd, v))\n    \n    if goal not in dist:\n        return float('inf'), []\n    \n    path = []\n    cur = goal\n    while cur != start:\n        path.append(cur)\n        cur = prev[cur]\n    path.append(start)\n    path.reverse()\n    \n    return dist[goal], path\n```",
+      "score": 1.0,
+      "pass": true,
+      "detail": "OK",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 5.005940909000856,
+        "prompt_eval_count": 113,
+        "eval_count": 201,
+        "perf": {
+          "load_s": 0.608881354,
+          "prompt_eval_s": 0.119902,
+          "eval_s": 4.174819,
+          "total_s_reported": 5.00230806,
+          "prompt_tps": 942.4363229971143,
+          "eval_tps": 48.14579985383797
+        }
+      }
+    }
+  ]
+}

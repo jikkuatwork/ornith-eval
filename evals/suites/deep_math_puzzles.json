@@ -1,0 +1,120 @@
+{
+  "id": "deep_math_puzzles",
+  "title": "Deep math puzzle/problem-set suite with exact deterministic graders.",
+  "kind": "standard",
+  "defaults": {
+    "think": false,
+    "num_ctx": 8192,
+    "num_predict": 1100,
+    "temperature": 0,
+    "seed": 901
+  },
+  "cases": [
+    {
+      "id": "catalan_lattice_paths",
+      "category": "combinatorics",
+      "prompt": "Solve carefully. End with FINAL: <answer>. How many shortest paths from (0,0) to (7,7), using only N and E steps, never go above the diagonal y=x?",
+      "grader": {
+        "type": "numeric",
+        "value": 429,
+        "tolerance": 0
+      }
+    },
+    {
+      "id": "linear_recurrence_a10",
+      "category": "recurrences",
+      "prompt": "Solve carefully. End with FINAL: <answer>. Let a_0=2, a_1=5, and a_n=5a_{n-1}-6a_{n-2}. What is a_10?",
+      "grader": {
+        "type": "numeric",
+        "value": 60073,
+        "tolerance": 0
+      }
+    },
+    {
+      "id": "coin_until_hh",
+      "category": "probability",
+      "prompt": "Solve carefully. End with FINAL: <answer>. A fair coin is tossed until the first time two consecutive heads appear. What is the expected number of tosses?",
+      "grader": {
+        "type": "numeric",
+        "value": 6,
+        "tolerance": 1e-09
+      }
+    },
+    {
+      "id": "spanning_trees_complete_bipartite",
+      "category": "graph_theory",
+      "prompt": "Solve carefully. End with FINAL: <answer>. How many spanning trees does the complete bipartite graph K_{3,4} have?",
+      "grader": {
+        "type": "numeric",
+        "value": 432,
+        "tolerance": 0
+      }
+    },
+    {
+      "id": "crt_four_constraints",
+      "category": "number_theory",
+      "prompt": "Solve carefully. End with FINAL: <answer>. Find the smallest nonnegative x satisfying x ≡ 4 mod 9, x ≡ 5 mod 10, and x ≡ 6 mod 11.",
+      "grader": {
+        "type": "numeric",
+        "value": 985,
+        "tolerance": 0
+      }
+    },
+    {
+      "id": "inclusion_exclusion_divisibility",
+      "category": "number_theory",
+      "prompt": "Solve carefully. End with FINAL: <answer>. How many integers from 1 to 1000 inclusive are divisible by 6 or 10, but not divisible by 15?",
+      "grader": {
+        "type": "numeric",
+        "value": 200,
+        "tolerance": 0
+      }
+    },
+    {
+      "id": "bayes_without_replacement_urn",
+      "category": "probability",
+      "prompt": "Solve carefully. End with FINAL: <fraction>. A box is chosen uniformly at random. Box A has 2 red and 1 blue ball. Box B has 1 red and 2 blue balls. One ball is drawn and it is red. Without replacing it, another ball is drawn from the same box. What is the probability the second ball is red?",
+      "grader": {
+        "type": "fraction",
+        "num": 1,
+        "den": 3
+      }
+    },
+    {
+      "id": "polynomial_remainder_fibonacci",
+      "category": "algebra",
+      "prompt": "Solve carefully. End with FINAL: <remainder>. What is the remainder when x^20 is divided by x^2 - x - 1?",
+      "grader": {
+        "type": "combo",
+        "slots": {
+          "x_coeff": [
+            "6765"
+          ],
+          "constant": [
+            "4181"
+          ]
+        }
+      }
+    },
+    {
+      "id": "digit_sum_divisible_by_7",
+      "category": "counting",
+      "prompt": "Solve carefully. End with FINAL: <answer>. How many three-digit positive integers are divisible by 7 and have digit sum 12?",
+      "grader": {
+        "type": "numeric",
+        "value": 9,
+        "tolerance": 0
+      }
+    },
+    {
+      "id": "fixed_points_permutations_9",
+      "category": "combinatorics",
+      "prompt": "Solve carefully. End with FINAL: <answer>. How many permutations of {1,2,...,9} have exactly 4 fixed points?",
+      "grader": {
+        "type": "numeric",
+        "value": 5544,
+        "tolerance": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "model": "ornith:latest",
+  "base_url": "http://127.0.0.1:11434",
+  "started_at_utc": "20260702T091630Z",
+  "suite": {
+    "id": "kerala_core",
+    "title": "Kerala-flavoured facts, words, cultural ideas, geography, and history.",
+    "kind": "standard",
+    "defaults": {
+      "think": false,
+      "num_ctx": 8192,
+      "num_predict": 400,
+      "temperature": 0,
+      "seed": 904
+    },
+    "_path": "/home/glasscube/Projects/ornith/evals/suites/kerala_core.json"
+  },
+  "summary": {
+    "pass": 3,
+    "total": 3,
+    "accuracy": 1.0,
+    "by_category": {
+      "geography": {
+        "score": 2.0,
+        "pass": 2,
+        "total": 2
+      },
+      "language": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      }
+    },
+    "total_wall_s": 6.665898343999288,
+    "mean_wall_s": 2.2219661146664293,
+    "median_wall_s": 1.5998056050011655,
+    "max_prompt_eval_count": 83,
+    "mean_prompt_eval_count": 81.33333333333333,
+    "mean_prompt_tps": 766.3153818873067,
+    "mean_eval_tps": 51.38814339660789
+  },
+  "rows": [
+    {
+      "id": "capital",
+      "category": "geography",
+      "domain": "kerala_core",
+      "prompt": "What is the capital of Kerala? Answer only the city name.",
+      "response": "Thiruvananthapuram",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='Thiruvananthapuram'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 4.117946877999202,
+        "prompt_eval_count": 83,
+        "eval_count": 8,
+        "perf": {
+          "load_s": 3.846257787,
+          "prompt_eval_s": 0.112605,
+          "eval_s": 0.153277,
+          "total_s_reported": 4.114700014,
+          "prompt_tps": 737.0898272723236,
+          "eval_tps": 52.19308833027787
+        }
+      }
+    },
+    {
+      "id": "language",
+      "category": "language",
+      "domain": "kerala_core",
+      "prompt": "What is the primary official language of Kerala?",
+      "response": "The primary official language of Kerala is **Malayalam**. It is one of the 22 scheduled languages of India and serves as the main medium of communication, education, and administration in the state.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='The primary official language of Kerala is **Malayalam**. It is one of the 22 scheduled languages of India and serves as the main medium of communication, education, and administration in the state.'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 1.5998056050011655,
+        "prompt_eval_count": 79,
+        "eval_count": 42,
+        "perf": {
+          "load_s": 0.635579201,
+          "prompt_eval_s": 0.101214,
+          "eval_s": 0.857253,
+          "total_s_reported": 1.597133437,
+          "prompt_tps": 780.5244333787816,
+          "eval_tps": 48.99370430899629
+        }
+      }
+    },
+    {
+      "id": "district_count",
+      "category": "geography",
+      "domain": "kerala_core",
+      "prompt": "How many districts does Kerala have? Answer with the number.",
+      "response": "Kerala has 14 districts.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "values=[14.0]; expected=14.0; best_abs_err=0.0",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 0.9481458609989204,
+        "prompt_eval_count": 82,
+        "eval_count": 9,
+        "perf": {
+          "load_s": 0.668712859,
+          "prompt_eval_s": 0.104949,
+          "eval_s": 0.169883,
+          "total_s_reported": 0.946091029,
+          "prompt_tps": 781.3318850108147,
+          "eval_tps": 52.977637550549495
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "model": "ornith:latest",
+  "base_url": "http://127.0.0.1:11434",
+  "started_at_utc": "20260702T091730Z",
+  "suite": {
+    "id": "deep_convoluted_conversation",
+    "title": "Deep, convoluted long-conversation memory with corrections, rumors, ownership transfers, and distractors.",
+    "kind": "conversation",
+    "turns": 1200,
+    "seed": 20260704,
+    "assistant_ack": "Noted.",
+    "system": "You are in a long natural conversation. Remember facts, corrections, and ownership transfers. Later side stories, jokes, rumors, and unrelated similar names/colors are distractors. When asked a memory question, answer briefly and use the latest real update.",
+    "defaults": {
+      "think": false,
+      "num_ctx": 65536,
+      "num_predict": 128,
+      "temperature": 0,
+      "seed": 905
+    },
+    "_path": "/home/glasscube/Projects/ornith/evals/suites/deep_convoluted_conversation.json"
+  },
+  "summary": {
+    "pass": 2,
+    "total": 2,
+    "accuracy": 1.0,
+    "by_category": {
+      "early_story_binding": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "state_update": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      }
+    },
+    "total_wall_s": 11.362382499999512,
+    "mean_wall_s": 5.681191249999756,
+    "median_wall_s": 5.681191249999756,
+    "max_prompt_eval_count": 9417,
+    "mean_prompt_eval_count": 7766.5,
+    "mean_prompt_tps": 2948.5767203879977,
+    "mean_eval_tps": 56.97924787628712
+  },
+  "rows": [
+    {
+      "id": "tom_ball_after_many_decoys",
+      "category": "early_story_binding",
+      "domain": "conversation",
+      "after_turn": 150,
+      "fact_turn": 2,
+      "turn_gap": 148,
+      "question": "Memory check: what color was Tom's ball? One word.",
+      "response": "Red.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "expected='red'; got='Red'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 8.442390305999652,
+        "prompt_eval_count": 6116,
+        "eval_count": 3,
+        "perf": {
+          "load_s": 4.495035787,
+          "prompt_eval_s": 3.853956,
+          "eval_s": 0.049299,
+          "total_s_reported": 8.440401955,
+          "prompt_tps": 1586.9407953801235,
+          "eval_tps": 60.85316132173066
+        }
+      }
+    },
+    {
+      "id": "maya_key_after_correction",
+      "category": "state_update",
+      "domain": "conversation",
+      "after_turn": 230,
+      "fact_turn": 131,
+      "turn_gap": 99,
+      "question": "Where is Maya's brass key now?",
+      "response": "In the green drawer.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='In the green drawer.'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 2.9199921939998603,
+        "prompt_eval_count": 9417,
+        "eval_count": 6,
+        "perf": {
+          "load_s": 0.566322708,
+          "prompt_eval_s": 2.184811,
+          "eval_s": 0.112983,
+          "total_s_reported": 2.918398079,
+          "prompt_tps": 4310.212645395872,
+          "eval_tps": 53.10533443084358
+        }
+      }
+    }
+  ]
+}

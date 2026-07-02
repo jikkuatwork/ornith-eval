@@ -1,0 +1,301 @@
+{
+  "id": "deep_convoluted_conversation",
+  "title": "Deep, convoluted long-conversation memory with corrections, rumors, ownership transfers, and distractors.",
+  "kind": "conversation",
+  "turns": 1200,
+  "seed": 20260704,
+  "assistant_ack": "Noted.",
+  "system": "You are in a long natural conversation. Remember facts, corrections, and ownership transfers. Later side stories, jokes, rumors, and unrelated similar names/colors are distractors. When asked a memory question, answer briefly and use the latest real update.",
+  "defaults": {
+    "think": false,
+    "num_ctx": 65536,
+    "num_predict": 128,
+    "temperature": 0,
+    "seed": 905
+  },
+  "events": [
+    {
+      "turn": 2,
+      "text": "Tiny story for later: Tom was playing with his red ball when he saw a yellow ox far away, so he went back home surprised."
+    },
+    {
+      "turn": 11,
+      "text": "Rhea's sapphire notebook is in the left drawer; this is Rhea's notebook, not Tom's ball."
+    },
+    {
+      "turn": 37,
+      "text": "Mira lent Dev her indigo shawl before Dev boarded the ferry."
+    },
+    {
+      "turn": 44,
+      "text": "For now the archive vault code is 2481."
+    },
+    {
+      "turn": 67,
+      "text": "The small ceramic elephant belongs to Leela, not Omar."
+    },
+    {
+      "turn": 88,
+      "text": "Maya put the brass key inside the blue vase after lunch."
+    },
+    {
+      "turn": 131,
+      "text": "Correction about Maya: she moved the brass key out of the blue vase and into the green drawer."
+    },
+    {
+      "turn": 159,
+      "text": "Nora's mentor is Ivo, and Ivo's codeword is glacier."
+    },
+    {
+      "turn": 181,
+      "text": "Nora lent the copper compass to Jules after the seminar."
+    },
+    {
+      "turn": 213,
+      "text": "Jules handed the copper compass to Priya; Priya has the compass now."
+    },
+    {
+      "turn": 240,
+      "text": "Nina packed three boxes: red box has the map, blue box has the lens, green box has the coin."
+    },
+    {
+      "turn": 277,
+      "text": "Omar received Nina's red box, still unopened."
+    },
+    {
+      "turn": 312,
+      "text": "If I later say monsoon gate, the response I want is coconut lamp."
+    },
+    {
+      "turn": 350,
+      "text": "Temporary archive note: the archive token was described as triangular, silver, 9 grams, in the mango tin."
+    },
+    {
+      "turn": 420,
+      "text": "Rhea moved her sapphire notebook from the left drawer to the right drawer."
+    },
+    {
+      "turn": 510,
+      "text": "Real vault update: the archive vault code changed from 2481 to 9134. Use 9134 as current."
+    },
+    {
+      "turn": 562,
+      "text": "Correction to the temporary archive note: the archive token is actually hexagonal, made of copper, weighs 7 grams, and is under the orchid pot."
+    },
+    {
+      "turn": 680,
+      "text": "Someone joked that Tom's ball was blue, but that was only a joke and not the old Tom story."
+    },
+    {
+      "turn": 742,
+      "text": "Lina's teacher is Farah, and Farah's favorite chenda rhythm label in this story is chempada."
+    },
+    {
+      "turn": 846,
+      "text": "Hari borrowed Omar's red box for a minute and returned it unopened; Omar still has Nina's red box."
+    },
+    {
+      "turn": 900,
+      "text": "Another unrelated story: Meera saw a green ox beside a blue cart. This is not Tom's story."
+    }
+  ],
+  "probes": [
+    {
+      "id": "tom_ball_after_many_decoys",
+      "after_turn": 150,
+      "fact_turn": 2,
+      "category": "early_story_binding",
+      "question": "Memory check: what color was Tom's ball? One word.",
+      "grader": {
+        "type": "exact",
+        "value": "red"
+      },
+      "num_predict": 64
+    },
+    {
+      "id": "maya_key_after_correction",
+      "after_turn": 230,
+      "fact_turn": 131,
+      "category": "state_update",
+      "question": "Where is Maya's brass key now?",
+      "grader": {
+        "type": "contains_all",
+        "terms": [
+          "green",
+          "drawer"
+        ]
+      },
+      "num_predict": 80
+    },
+    {
+      "id": "compass_current_holder",
+      "after_turn": 260,
+      "fact_turn": 213,
+      "category": "ownership_transfer",
+      "question": "Who currently has the copper compass?",
+      "grader": {
+        "type": "contains_all",
+        "terms": [
+          "Priya"
+        ]
+      },
+      "num_predict": 80
+    },
+    {
+      "id": "map_owner_from_box",
+      "after_turn": 330,
+      "fact_turn": 277,
+      "category": "container_reasoning",
+      "question": "Who has the map now, using Nina's box facts?",
+      "grader": {
+        "type": "contains_all",
+        "terms": [
+          "Omar"
+        ]
+      },
+      "num_predict": 96
+    },
+    {
+      "id": "monsoon_gate_phrase",
+      "after_turn": 380,
+      "fact_turn": 312,
+      "category": "instruction_memory",
+      "question": "monsoon gate",
+      "grader": {
+        "type": "exact",
+        "value": "coconut lamp"
+      },
+      "num_predict": 64
+    },
+    {
+      "id": "vault_current_code",
+      "after_turn": 540,
+      "fact_turn": 510,
+      "category": "numeric_update",
+      "question": "What is the current archive vault code?",
+      "grader": {
+        "type": "numeric",
+        "value": 9134,
+        "tolerance": 0
+      },
+      "num_predict": 64
+    },
+    {
+      "id": "archive_token_current_combo",
+      "after_turn": 610,
+      "fact_turn": 562,
+      "category": "multi_attribute_update",
+      "question": "Give the archive token's current shape, material, weight, and location.",
+      "grader": {
+        "type": "combo",
+        "slots": {
+          "shape": [
+            "hexagonal",
+            "hexagon"
+          ],
+          "material": [
+            "copper"
+          ],
+          "weight": [
+            "7",
+            "seven"
+          ],
+          "location": [
+            "orchid",
+            "pot"
+          ]
+        }
+      },
+      "num_predict": 128
+    },
+    {
+      "id": "mentor_codeword_multihop",
+      "after_turn": 760,
+      "fact_turn": 159,
+      "category": "multi_hop_relation",
+      "question": "What is the codeword of Nora's mentor?",
+      "grader": {
+        "type": "contains_all",
+        "terms": [
+          "glacier"
+        ]
+      },
+      "num_predict": 96
+    },
+    {
+      "id": "tom_animal_after_false_ox",
+      "after_turn": 930,
+      "fact_turn": 2,
+      "category": "decoy_resistance",
+      "question": "In Tom's old story, what animal did he see and what color was it?",
+      "grader": {
+        "type": "contains_all",
+        "terms": [
+          "yellow",
+          "ox"
+        ]
+      },
+      "num_predict": 96
+    },
+    {
+      "id": "late_composite_all",
+      "after_turn": 1030,
+      "fact_turn": 2,
+      "category": "late_composite",
+      "question": "List these remembered values: Tom ball color; Tom animal/color; current vault code; Maya key location; current compass holder; monsoon-gate phrase; archive token current shape/material/weight/location.",
+      "grader": {
+        "type": "combo",
+        "slots": {
+          "ball": [
+            "red"
+          ],
+          "animal": [
+            "yellow ox"
+          ],
+          "code": [
+            "9134"
+          ],
+          "key": [
+            "green drawer"
+          ],
+          "holder": [
+            "Priya"
+          ],
+          "phrase": [
+            "coconut lamp"
+          ],
+          "archive_shape": [
+            "hexagonal",
+            "hexagon"
+          ],
+          "archive_material": [
+            "copper"
+          ],
+          "archive_weight": [
+            "7",
+            "seven"
+          ],
+          "archive_location": [
+            "orchid",
+            "pot"
+          ]
+        }
+      },
+      "num_predict": 220
+    },
+    {
+      "id": "ferry_coreference_ultralate",
+      "after_turn": 1200,
+      "fact_turn": 37,
+      "category": "ultra_late_coreference",
+      "question": "Who boarded the ferry with the indigo shawl?",
+      "grader": {
+        "type": "contains_all",
+        "terms": [
+          "Dev"
+        ]
+      },
+      "num_predict": 80
+    }
+  ]
+}

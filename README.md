@@ -41,6 +41,7 @@ Highlights:
 | [`ORNITH_BENCHMARK_REPORT.md`](ORNITH_BENCHMARK_REPORT.md) | Performance, throughput, long-context, tools, and lightweight capability eval. |
 | [`ORNITH_TOUGH_EVAL_REPORT.md`](ORNITH_TOUGH_EVAL_REPORT.md) | Tough mixed-domain eval across math, programming, science, logic, data, and security. |
 | [`ORNITH_CONVERSATION_CONTEXT_EVAL_REPORT.md`](ORNITH_CONVERSATION_CONTEXT_EVAL_REPORT.md) | Long conversational context and memory eval, including the Tom/red-ball/yellow-ox scenario. |
+| [`evals/README.md`](evals/README.md) | Modular eval framework and the new special-purpose suites. |
 
 Raw run outputs are under [`benchmark_results/`](benchmark_results/).
 
@@ -146,6 +147,30 @@ Late-probe examples:
 
 Controlled 340-turn run also scored **13/13**.
 
+### Modular special-purpose suites
+
+A reusable suite runner now lives under [`evals/`](evals/). It supports standard prompt/response suites and synthetic long-conversation suites.
+
+Seed suites:
+
+| Suite | Purpose |
+|---|---|
+| `deep_convoluted_conversation` | Corrections, rumors, similar entities, ownership transfers, multi-hop facts, and late probes. |
+| `deep_math_puzzles` | Exact-answer math problem sets. |
+| `difficult_programming` | Executable Python tasks with unit-test graders. |
+| `hard_facts` | Difficult factual recall across systems, science, history, and computing. |
+| `kerala_core` | Kerala-flavoured facts, Malayalam words, culture, geography, and social ideas. |
+
+Run them with:
+
+```bash
+python3 evals/runner.py --list
+python3 evals/runner.py --suite kerala_core --model ornith:latest
+python3 evals/runner.py --suite deep_convoluted_conversation --model ornith:latest --num-ctx 65536
+```
+
+Smoke runs for all new suite families passed on limited subsets; outputs are in `benchmark_results/modular_eval_*.{json,md}`.
+
 ## Repository layout
 
 ```text
@@ -155,6 +180,11 @@ Controlled 340-turn run also scored **13/13**.
 ├── tough_eval_ornith.py
 ├── conversation_context_eval_ornith.py
 ├── conversation_context_eval_natural_ornith.py
+├── evals/
+│   ├── README.md
+│   ├── runner.py
+│   ├── graders.py
+│   └── suites/
 ├── ORNITH_BENCHMARK_REPORT.md
 ├── ORNITH_TOUGH_EVAL_REPORT.md
 ├── ORNITH_CONVERSATION_CONTEXT_EVAL_REPORT.md
@@ -209,6 +239,15 @@ Run the natural long-conversation eval:
 
 ```bash
 python3 conversation_context_eval_natural_ornith.py --model ornith:latest --turns 1000 --num-ctx 65536
+```
+
+Run a modular suite:
+
+```bash
+python3 evals/runner.py --suite deep_math_puzzles --model ornith:latest
+python3 evals/runner.py --suite difficult_programming --model ornith:latest
+python3 evals/runner.py --suite hard_facts --model ornith:latest
+python3 evals/runner.py --suite kerala_core --model ornith:latest
 ```
 
 Use `--think` on the eval scripts to enable Ollama thinking mode. If using `--think`, increase `num_predict` or expect some answers to be truncated/empty because hidden thinking consumes the generation budget.

@@ -1,0 +1,102 @@
+{
+  "id": "difficult_programming",
+  "title": "Difficult executable Python programming tasks graded by hidden-ish unit tests.",
+  "kind": "standard",
+  "defaults": {
+    "think": false,
+    "num_ctx": 8192,
+    "num_predict": 1800,
+    "temperature": 0,
+    "seed": 902
+  },
+  "cases": [
+    {
+      "id": "dijkstra_path_reconstruction",
+      "category": "graphs",
+      "prompt": "Return only Python code. Define dijkstra_path(graph, start, goal). graph maps nodes to lists of (neighbor, weight). Return (distance, path). If unreachable, return (float('inf'), []).",
+      "grader": {
+        "type": "python_unittest",
+        "required_name": "dijkstra_path",
+        "timeout": 8,
+        "tests": "\ng = {'A':[('B',2),('C',5)], 'B':[('C',1),('D',4)], 'C':[('D',1)], 'D':[]}\nd,p = dijkstra_path(g,'A','D')\nassert d == 4 and p == ['A','B','C','D'], (d,p)\nd,p = dijkstra_path(g,'D','A')\nassert d == float('inf') and p == []\nassert dijkstra_path({'x':[]}, 'x', 'x') == (0, ['x'])\n"
+      }
+    },
+    {
+      "id": "expression_parser",
+      "category": "parsing",
+      "prompt": "Return only Python code. Define eval_expr(s) for integers, whitespace, +, -, *, parentheses, and unary minus. Use normal precedence; do not use eval/exec/ast.literal_eval.",
+      "grader": {
+        "type": "python_unittest",
+        "required_name": "eval_expr",
+        "timeout": 8,
+        "tests": "\nassert eval_expr('2+3*4') == 14\nassert eval_expr(' (2 + 3) * 4 ') == 20\nassert eval_expr('-2*(3+4) + 10') == -4\nassert eval_expr('7-2-1') == 4\nassert eval_expr('3 * -(2 + 5)') == -21\nsrc = open(__file__).read()\nassert 'eval(' not in src and 'exec(' not in src and 'literal_eval' not in src\n"
+      }
+    },
+    {
+      "id": "sliding_window_median",
+      "category": "data_structures",
+      "prompt": "Return only Python code. Define median_sliding_window(nums, k) returning a list of medians for each length-k window. For even k use the average of the two middle values.",
+      "grader": {
+        "type": "python_unittest",
+        "required_name": "median_sliding_window",
+        "timeout": 8,
+        "tests": "\nassert median_sliding_window([1,3,-1,-3,5,3,6,7], 3) == [1,-1,-1,3,5,6]\nassert median_sliding_window([1,2,3,4], 2) == [1.5,2.5,3.5]\nassert median_sliding_window([5], 1) == [5]\n"
+      }
+    },
+    {
+      "id": "json_patch_subset",
+      "category": "data_transform",
+      "prompt": "Return only Python code. Define apply_patch(doc, patch) implementing a small JSON Patch subset: ops add, replace, remove; paths like /a/0/b; dict keys and list indices; return a modified deep copy, do not mutate input.",
+      "grader": {
+        "type": "python_unittest",
+        "required_name": "apply_patch",
+        "timeout": 8,
+        "tests": "\norig = {'a':[{'b':1}], 'x':2}\nout = apply_patch(orig, [{'op':'replace','path':'/a/0/b','value':3}, {'op':'add','path':'/a/1','value':{'b':4}}, {'op':'remove','path':'/x'}])\nassert out == {'a':[{'b':3},{'b':4}]}, out\nassert orig == {'a':[{'b':1}], 'x':2}\nassert apply_patch({'a':{}}, [{'op':'add','path':'/a/c','value':5}]) == {'a':{'c':5}}\n"
+      }
+    },
+    {
+      "id": "word_ladder_length",
+      "category": "graphs",
+      "prompt": "Return only Python code. Define word_ladder_len(begin, end, words) returning the number of words in the shortest transformation sequence, changing one letter at a time and using only words from words; return 0 if impossible.",
+      "grader": {
+        "type": "python_unittest",
+        "required_name": "word_ladder_len",
+        "timeout": 8,
+        "tests": "\nassert word_ladder_len('hit','cog',['hot','dot','dog','lot','log','cog']) == 5\nassert word_ladder_len('hit','cog',['hot','dot','dog','lot','log']) == 0\nassert word_ladder_len('a','c',['a','b','c']) == 2\n"
+      }
+    },
+    {
+      "id": "min_window_subsequence",
+      "category": "strings",
+      "prompt": "Return only Python code. Define min_window_subsequence(s, t) returning the shortest substring of s that contains t as a subsequence. If none, return ''. If ties, return the earliest.",
+      "grader": {
+        "type": "python_unittest",
+        "required_name": "min_window_subsequence",
+        "timeout": 8,
+        "tests": "\nassert min_window_subsequence('abcdebdde', 'bde') == 'bcde'\nassert min_window_subsequence('jmeqksfrsdcmsiwvaovztaqenprpvnbstl', 'u') == ''\nassert min_window_subsequence('fgrqsqsnodwmxzkzxwqegkndaa', 'kzed') == 'kzxwqegknd'\nassert min_window_subsequence('abc', 'abc') == 'abc'\n"
+      }
+    },
+    {
+      "id": "weighted_interval_scheduling",
+      "category": "dynamic_programming",
+      "prompt": "Return only Python code. Define max_weight_nonoverlap(intervals). Each interval is (start,end,weight) and intervals are half-open [start,end). Return maximum total weight of non-overlapping intervals.",
+      "grader": {
+        "type": "python_unittest",
+        "required_name": "max_weight_nonoverlap",
+        "timeout": 8,
+        "tests": "\nassert max_weight_nonoverlap([(1,3,5),(2,5,6),(4,6,5),(6,7,4),(5,8,11),(7,9,2)]) == 17\nassert max_weight_nonoverlap([]) == 0\nassert max_weight_nonoverlap([(1,2,3),(2,3,4),(1,3,10)]) == 10\n"
+      }
+    },
+    {
+      "id": "tarjan_scc",
+      "category": "graphs",
+      "prompt": "Return only Python code. Define strongly_connected_components(graph) where graph maps nodes to iterable neighbors. Return a list of SCCs, each as a set. Order does not matter; include nodes that appear only as neighbors.",
+      "grader": {
+        "type": "python_unittest",
+        "required_name": "strongly_connected_components",
+        "timeout": 8,
+        "tests": "\ndef norm(comps): return sorted([tuple(sorted(c)) for c in comps])\ng = {1:[2], 2:[3,4], 3:[1], 4:[5], 5:[4], 6:[5]}\nassert norm(strongly_connected_components(g)) == [(1,2,3),(4,5),(6,)]\nassert norm(strongly_connected_components({'a':[]})) == [('a',)]\nassert norm(strongly_connected_components({'a':['b']})) == [('a',),('b',)]\n"
+      }
+    }
+  ]
+}

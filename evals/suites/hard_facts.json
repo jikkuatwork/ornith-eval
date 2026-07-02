@@ -1,0 +1,188 @@
+{
+  "id": "hard_facts",
+  "title": "Hard factual recall across computing, science, history, and systems.",
+  "kind": "standard",
+  "defaults": {
+    "think": false,
+    "num_ctx": 8192,
+    "num_predict": 350,
+    "temperature": 0,
+    "seed": 903
+  },
+  "cases": [
+    {
+      "id": "sysv_abi_registers",
+      "category": "systems",
+      "prompt": "In the x86-64 System V ABI, what are the first six integer/pointer argument registers in order? End with FINAL: <comma-separated registers>.",
+      "grader": {
+        "type": "combo",
+        "slots": {
+          "rdi": [
+            "rdi"
+          ],
+          "rsi": [
+            "rsi"
+          ],
+          "rdx": [
+            "rdx"
+          ],
+          "rcx": [
+            "rcx"
+          ],
+          "r8": [
+            "r8"
+          ],
+          "r9": [
+            "r9"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ipv6_loopback",
+      "category": "networking",
+      "prompt": "What is the IPv6 loopback address? Answer only the address.",
+      "grader": {
+        "type": "contains_all",
+        "terms": [
+          "::1"
+        ]
+      }
+    },
+    {
+      "id": "http_429",
+      "category": "web",
+      "prompt": "Which HTTP status code means Too Many Requests? Answer with the number.",
+      "grader": {
+        "type": "numeric",
+        "value": 429,
+        "tolerance": 0
+      }
+    },
+    {
+      "id": "unicode_replacement_char",
+      "category": "unicode",
+      "prompt": "What Unicode code point is the replacement character �? Answer as U+XXXX.",
+      "grader": {
+        "type": "contains_all",
+        "terms": [
+          "U+FFFD"
+        ]
+      }
+    },
+    {
+      "id": "godel_second",
+      "category": "logic",
+      "prompt": "Which Gödel theorem says a sufficiently strong consistent formal system cannot prove its own consistency?",
+      "grader": {
+        "type": "contains_all",
+        "terms": [
+          "second",
+          "incompleteness"
+        ]
+      }
+    },
+    {
+      "id": "cap_theorem",
+      "category": "distributed_systems",
+      "prompt": "In the CAP theorem, what do C, A, and P stand for?",
+      "grader": {
+        "type": "combo",
+        "slots": {
+          "c": [
+            "consistency"
+          ],
+          "a": [
+            "availability"
+          ],
+          "p": [
+            "partition"
+          ]
+        }
+      }
+    },
+    {
+      "id": "p53_role",
+      "category": "biology",
+      "prompt": "What is p53 best known as in cancer biology?",
+      "grader": {
+        "type": "contains_all",
+        "terms": [
+          "tumor",
+          "suppressor"
+        ]
+      }
+    },
+    {
+      "id": "crispr_cas9_cut",
+      "category": "biology",
+      "prompt": "In CRISPR-Cas9 editing, what molecule guides Cas9 to the target sequence?",
+      "grader": {
+        "type": "contains_any",
+        "terms": [
+          "guide RNA",
+          "gRNA",
+          "sgRNA",
+          "RNA guide"
+        ]
+      }
+    },
+    {
+      "id": "postgres_mvcc_columns",
+      "category": "databases",
+      "prompt": "Name the PostgreSQL system columns commonly associated with tuple MVCC transaction visibility.",
+      "grader": {
+        "type": "combo",
+        "slots": {
+          "xmin": [
+            "xmin"
+          ],
+          "xmax": [
+            "xmax"
+          ]
+        }
+      }
+    },
+    {
+      "id": "apollo11_landing",
+      "category": "history",
+      "prompt": "On what date did Apollo 11 land on the Moon?",
+      "grader": {
+        "type": "combo",
+        "slots": {
+          "month": [
+            "July"
+          ],
+          "day": [
+            "20"
+          ],
+          "year": [
+            "1969"
+          ]
+        }
+      }
+    },
+    {
+      "id": "tcp_teardown_flag",
+      "category": "networking",
+      "prompt": "Which TCP flag is used to request graceful connection teardown?",
+      "grader": {
+        "type": "contains_all",
+        "terms": [
+          "FIN"
+        ]
+      }
+    },
+    {
+      "id": "relativity_mercury",
+      "category": "physics",
+      "prompt": "General relativity famously explained the anomalous perihelion precession of which planet?",
+      "grader": {
+        "type": "contains_all",
+        "terms": [
+          "Mercury"
+        ]
+      }
+    }
+  ]
+}

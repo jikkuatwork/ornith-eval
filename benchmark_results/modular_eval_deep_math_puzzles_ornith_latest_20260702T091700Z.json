@@ -1,0 +1,94 @@
+{
+  "model": "ornith:latest",
+  "base_url": "http://127.0.0.1:11434",
+  "started_at_utc": "20260702T091700Z",
+  "suite": {
+    "id": "deep_math_puzzles",
+    "title": "Deep math puzzle/problem-set suite with exact deterministic graders.",
+    "kind": "standard",
+    "defaults": {
+      "think": false,
+      "num_ctx": 8192,
+      "num_predict": 1100,
+      "temperature": 0,
+      "seed": 901
+    },
+    "_path": "/home/glasscube/Projects/ornith/evals/suites/deep_math_puzzles.json"
+  },
+  "summary": {
+    "pass": 2,
+    "total": 2,
+    "accuracy": 1.0,
+    "by_category": {
+      "combinatorics": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "recurrences": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      }
+    },
+    "total_wall_s": 20.788056716999563,
+    "mean_wall_s": 10.394028358499781,
+    "median_wall_s": 10.394028358499781,
+    "max_prompt_eval_count": 119,
+    "mean_prompt_eval_count": 115.5,
+    "mean_prompt_tps": 901.9648494525317,
+    "mean_eval_tps": 48.38488776951914
+  },
+  "rows": [
+    {
+      "id": "catalan_lattice_paths",
+      "category": "combinatorics",
+      "domain": "deep_math_puzzles",
+      "prompt": "Solve carefully. End with FINAL: <answer>. How many shortest paths from (0,0) to (7,7), using only N and E steps, never go above the diagonal y=x?",
+      "response": "This is a classic combinatorics problem involving lattice paths that stay below or on the diagonal.\n\n**Step 1: Understand the constraints**\n- We need shortest paths from (0,0) to (7,7), meaning exactly 7 N steps and 7 E steps (total 14 steps).\n- Paths must never go above y=x, i.e., at every point (x,y), we must have y ≤ x.\n\n**Step 2: Apply the reflection principle / Catalan numbers**\nThe number of such paths is given by the **Catalan number**:\n$$C_n = \\frac{1}{n+1}\\binom{2n}{n}$$\n\nFor n=7:\n$$C_7 = \\frac{1}{8}\\binom{14}{7} = \\frac{1}{8} \\times 3432 = 429$$\n\n**Step 3: Verify with the formula**\n- Total unrestricted paths from (0,0) to (n,n): $\\binom{2n}{n}$\n- Paths that go above y=x at some point can be reflected across y=x+1 using the reflection principle.\n- The number of \"bad\" paths equals the number of unrestricted paths from (0,0) to (n,n) that touch or cross y=x+1, which by reflection is equal to $\\binom{2n}{n-1}$.\n\nSo: Good paths = $\\binom{2n}{n} - \\binom{2n}{n-1}$\n= $3432 - 1624 = 1808$? Wait, let me recalculate.\n\nActually:\n$\\binom{14}{7} = 3432$\n$\\binom{14}{6} = \\frac{14!}{6!8!} = 3003$\n\nGood paths = $3432 - 3003 = 429$ ✓\n\nThis matches the Catalan number formula.\n\nFINAL: 429",
+      "score": 1.0,
+      "pass": true,
+      "detail": "values=[429.0]; expected=429.0; best_abs_err=0.0",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 10.123287376000007,
+        "prompt_eval_count": 112,
+        "eval_count": 449,
+        "perf": {
+          "load_s": 0.652877025,
+          "prompt_eval_s": 0.128547,
+          "eval_s": 9.334358,
+          "total_s_reported": 10.11871758,
+          "prompt_tps": 871.2766536753095,
+          "eval_tps": 48.10186195986912
+        }
+      }
+    },
+    {
+      "id": "linear_recurrence_a10",
+      "category": "recurrences",
+      "domain": "deep_math_puzzles",
+      "prompt": "Solve carefully. End with FINAL: <answer>. Let a_0=2, a_1=5, and a_n=5a_{n-1}-6a_{n-2}. What is a_10?",
+      "response": "I'll solve this recurrence relation step by step.\n\nGiven: a₀ = 2, a₁ = 5, and aₙ = 5aₙ₋₁ - 6aₙ₋₂\n\nLet me compute the terms sequentially:\n\n- a₀ = 2\n- a₁ = 5\n- a₂ = 5(5) - 6(2) = 25 - 12 = 13\n- a₃ = 5(13) - 6(5) = 65 - 30 = 35\n- a₄ = 5(35) - 6(13) = 175 - 78 = 97\n- a₅ = 5(97) - 6(35) = 485 - 210 = 275\n- a₆ = 5(275) - 6(97) = 1375 - 582 = 793\n- a₇ = 5(793) - 6(275) = 3965 - 1650 = 2315\n- a₈ = 5(2315) - 6(793) = 11575 - 4758 = 6817\n- a₉ = 5(6817) - 6(2315) = 34085 - 13890 = 20195\n- a₁₀ = 5(20195) - 6(6817) = 100975 - 40902 = 60073\n\nLet me verify: 5 × 20195 = 100,975 and 6 × 6817 = 40,902. So a₁₀ = 100,975 - 40,902 = 60,073.\n\nFINAL: 60073",
+      "score": 1.0,
+      "pass": true,
+      "detail": "values=[60073.0]; expected=60073.0; best_abs_err=0.0",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 10.664769340999555,
+        "prompt_eval_count": 119,
+        "eval_count": 480,
+        "perf": {
+          "load_s": 0.603251079,
+          "prompt_eval_s": 0.127593,
+          "eval_s": 9.862761,
+          "total_s_reported": 10.661584009,
+          "prompt_tps": 932.6530452297538,
+          "eval_tps": 48.66791357916916
+        }
+      }
+    }
+  ]
+}

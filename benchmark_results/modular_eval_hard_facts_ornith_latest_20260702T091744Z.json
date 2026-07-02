@@ -1,0 +1,124 @@
+{
+  "model": "ornith:latest",
+  "base_url": "http://127.0.0.1:11434",
+  "started_at_utc": "20260702T091744Z",
+  "suite": {
+    "id": "hard_facts",
+    "title": "Hard factual recall across computing, science, history, and systems.",
+    "kind": "standard",
+    "defaults": {
+      "think": false,
+      "num_ctx": 8192,
+      "num_predict": 350,
+      "temperature": 0,
+      "seed": 903
+    },
+    "_path": "/home/glasscube/Projects/ornith/evals/suites/hard_facts.json"
+  },
+  "summary": {
+    "pass": 3,
+    "total": 3,
+    "accuracy": 1.0,
+    "by_category": {
+      "systems": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "networking": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "web": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      }
+    },
+    "total_wall_s": 7.68858862900197,
+    "mean_wall_s": 2.56286287633399,
+    "median_wall_s": 0.8603065740007878,
+    "max_prompt_eval_count": 104,
+    "mean_prompt_eval_count": 90.66666666666667,
+    "mean_prompt_tps": 812.4802028938087,
+    "mean_eval_tps": 57.25494078720999
+  },
+  "rows": [
+    {
+      "id": "sysv_abi_registers",
+      "category": "systems",
+      "domain": "hard_facts",
+      "prompt": "In the x86-64 System V ABI, what are the first six integer/pointer argument registers in order? End with FINAL: <comma-separated registers>.",
+      "response": "The x86-64 System V ABI defines the first six general-purpose registers used for passing integer or pointer arguments as rdi, rsi, rdx, rcx, r8, and r9.\n\nFINAL: rdi,rsi,rdx,rcx,r8,r9",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing_slots=[]; response='The x86-64 System V ABI defines the first six general-purpose registers used for passing integer or pointer arguments as rdi, rsi, rdx, rcx, r8, and r9.\\n\\nFINAL: rdi,rsi,rdx,rcx,r8,r9'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 6.066879228999824,
+        "prompt_eval_count": 104,
+        "eval_count": 63,
+        "perf": {
+          "load_s": 4.628131518,
+          "prompt_eval_s": 0.12558,
+          "eval_s": 1.307148,
+          "total_s_reported": 6.063858454,
+          "prompt_tps": 828.1573498964804,
+          "eval_tps": 48.196531685776975
+        }
+      }
+    },
+    {
+      "id": "ipv6_loopback",
+      "category": "networking",
+      "domain": "hard_facts",
+      "prompt": "What is the IPv6 loopback address? Answer only the address.",
+      "response": "::1",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='::1'",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 0.8603065740007878,
+        "prompt_eval_count": 84,
+        "eval_count": 3,
+        "perf": {
+          "load_s": 0.646966234,
+          "prompt_eval_s": 0.103034,
+          "eval_s": 0.047665,
+          "total_s_reported": 0.858211101,
+          "prompt_tps": 815.2648640254673,
+          "eval_tps": 62.939263610615754
+        }
+      }
+    },
+    {
+      "id": "http_429",
+      "category": "web",
+      "domain": "hard_facts",
+      "prompt": "Which HTTP status code means Too Many Requests? Answer with the number.",
+      "response": "429",
+      "score": 1.0,
+      "pass": true,
+      "detail": "values=[429.0]; expected=429.0; best_abs_err=0.0",
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "wall_s": 0.7614028260013583,
+        "prompt_eval_count": 84,
+        "eval_count": 4,
+        "perf": {
+          "load_s": 0.584282879,
+          "prompt_eval_s": 0.105791,
+          "eval_s": 0.065974999,
+          "total_s_reported": 0.758925079,
+          "prompt_tps": 794.0183947594786,
+          "eval_tps": 60.62902706523724
+        }
+      }
+    }
+  ]
+}

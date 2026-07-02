@@ -1,0 +1,529 @@
+{
+  "model": "ornith:latest",
+  "base_url": "http://127.0.0.1:11434",
+  "think": false,
+  "started_at_utc": "20260702T064624Z",
+  "summary": {
+    "score": 19.0,
+    "pass": 19,
+    "total": 20,
+    "accuracy": 0.95,
+    "by_domain": {
+      "math": {
+        "score": 6.0,
+        "pass": 6,
+        "total": 6
+      },
+      "programming": {
+        "score": 4.0,
+        "pass": 4,
+        "total": 5
+      },
+      "science": {
+        "score": 5.0,
+        "pass": 5,
+        "total": 5
+      },
+      "logic": {
+        "score": 2.0,
+        "pass": 2,
+        "total": 2
+      },
+      "data": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "security": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      }
+    },
+    "mean_wall_s": 9.422473543500042,
+    "total_wall_s": 188.44947087000082,
+    "mean_eval_tps": 43.53246391684002
+  },
+  "tests": [
+    {
+      "id": "math_number_theory_crt",
+      "domain": "math",
+      "score": 1.0,
+      "pass": true,
+      "detail": "values=[212.0], expected=212, best_abs_err=0.0",
+      "response": "I need to find the smallest nonnegative integer $x$ satisfying:\n- $x \\equiv 2 \\pmod{7}$\n- $x \\equiv 3 \\pmod{11}$\n- $x \\equiv 4 \\pmod{13}$\n\nLet me solve this step by step using the Chinese Remainder Theorem.\n\n**Step 1: Combine first two congruences**\n\nFrom $x \\equiv 2 \\pmod{7}$, we have $x = 7a + 2$ for some integer $a$.\n\nSubstitute into second congruence:\n$7a + 2 \\equiv 3 \\pmod{11}$\n$7a \\equiv 1 \\pmod{11}$\n\nFind the modular inverse of 7 mod 11. Since $7 \\times 8 = 56 = 5 \\times 11 + 1$, we get $7^{-1} \\equiv 8 \\pmod{11}$.\n\nSo: $a \\equiv 8 \\pmod{11}$, meaning $a = 11b + 8$ for some integer $b$.\n\nSubstitute back: $x = 7(11b + 8) + 2 = 77b + 56 + 2 = 77b + 58$.\n\n**Step 2: Combine with third congruence**\n\nNow substitute into the third congruence:\n$77b + 58 \\equiv 4 \\pmod{13}$\n\nFirst, reduce coefficients mod 13:\n- $77 = 5 \\times 13 + 12$, so $77 \\equiv 12 \\equiv -1 \\pmod{13}$\n- $58 = 4 \\times 13 + 6$, so $58 \\equiv 6 \\pmod{13}$\n\nSo: $-b + 6 \\equiv 4 \\pmod{13}$\n$-b \\equiv -2 \\pmod{13}$\n$b \\equiv 2 \\pmod{13}$\n\nTherefore, $b = 13c + 2$ for some integer $c$.\n\n**Step 3: Find the general solution**\n\nSubstitute back: $x = 77(13c + 2) + 58 = 1001c + 154 + 58 = 1001c + 212$\n\nThe smallest nonnegative value occurs when $c = 0$:\n$x = 212$\n\n**Step 4: Verify the solution**\n\n- $212 \\div 7 = 30$ remainder $2$ ✓ ($212 = 30 \\times 7 + 2$)\n- $212 \\div 11 = 19$ remainder $3$ ✓ ($212 = 19 \\times 11 + 3$)\n- $212 \\div 13 = 16$ remainder $4$ ✓ ($212 = 16 \\times 13 + 4$)\n\nAll three congruences are satisfied.\n\nFINAL: 212",
+      "thinking_chars": 0,
+      "wall_s": 17.190651029000037,
+      "metrics": {
+        "wall_s": 17.190295667999635,
+        "done_reason": "stop",
+        "prompt_eval_count": 127,
+        "eval_count": 713,
+        "perf": {
+          "load_s": 0.418304621,
+          "prompt_eval_s": 0.148288,
+          "eval_s": 16.539350999,
+          "total_s_reported": 17.18574535,
+          "prompt_tps": 856.4415192058697,
+          "eval_tps": 43.10930943076964
+        }
+      }
+    },
+    {
+      "id": "math_combinatorics_derangements",
+      "domain": "math",
+      "score": 1.0,
+      "pass": true,
+      "detail": "values=[2464.0], expected=2464, best_abs_err=0.0",
+      "response": "**Step-by-step derivation:**\n\nWe want the number of permutations of $\\{1,2,\\dots,8\\}$ that fix exactly $3$ elements.\n\n1. **Choose which 3 are fixed.**  \n   $\\binom{8}{3} = \\frac{8 \\cdot 7 \\cdot 6}{3 \\cdot 2 \\cdot 1} = 56$.\n\n2. **The remaining 5 must have *no* fixed points** (a derangement of 5 elements).  \n   The number of derangements $D_n$ satisfies:\n   $$D_n = n! \\sum_{k=0}^{n} \\frac{(-1)^k}{k!}$$\n\n   For $n=5$:\n   - $D_5 = 5! \\left(\\frac{1}{0!} - \\frac{1}{1!} + \\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!} - \\frac{1}{5!}\\right)$\n   - $= 120 \\left(1 - 1 + \\frac{1}{2} - \\frac{1}{6} + \\frac{1}{24} - \\frac{1}{120}\\right)$\n   - $= 120 \\cdot \\left(\\frac{1}{2} - \\frac{1}{6} + \\frac{1}{24} - \\frac{1}{120}\\right)$\n\n   Compute the sum:\n   - $\\frac{1}{2} = \\frac{60}{120}$\n   - $-\\frac{1}{6} = -\\frac{20}{120}$\n   - $\\frac{1}{24} = \\frac{5}{120}$\n   - $-\\frac{1}{120} = -\\frac{1}{120}$\n\n   Sum: $\\frac{60 - 20 + 5 - 1}{120} = \\frac{44}{120}$\n\n   So $D_5 = 120 \\cdot \\frac{44}{120} = 44$.\n\n3. **Total permutations with exactly 3 fixed points:**\n   $$\\binom{8}{3} \\times D_5 = 56 \\times 44$$\n\n   $56 \\times 44$:\n   - $56 \\times 40 = 2240$\n   - $56 \\times 4 = 224$\n   - Total: $2240 + 224 = 2464$\n\n**Verification:**  \n- $\\binom{8}{3} = 56$ ✓\n- $D_5 = 44$ (well-known value) ✓\n- $56 \\times 44 = 2464$ ✓\n\nFINAL: 2464",
+      "thinking_chars": 0,
+      "wall_s": 15.40227919400013,
+      "metrics": {
+        "wall_s": 15.401910156000213,
+        "done_reason": "stop",
+        "prompt_eval_count": 103,
+        "eval_count": 659,
+        "perf": {
+          "load_s": 0.572984375,
+          "prompt_eval_s": 0.135179,
+          "eval_s": 14.687861,
+          "total_s_reported": 15.398290483,
+          "prompt_tps": 761.952670163265,
+          "eval_tps": 44.866982333234226
+        }
+      }
+    },
+    {
+      "id": "math_probability_cards",
+      "domain": "math",
+      "score": 1.0,
+      "pass": true,
+      "detail": "got_fraction='198/4165' in final, expected=198/4165",
+      "response": "**Step-by-step derivation:**\n\n1. **Total number of 5-card hands**:  \n   \\[\n   \\binom{52}{5} = \\frac{52 \\times 51 \\times 50 \\times 49 \\times 48}{5 \\times 4 \\times 3 \\times 2 \\times 1} = 2,598,960\n   \\]\n\n2. **Number of hands with exactly two pairs**:  \n   - Choose the 2 ranks for the pairs: \\(\\binom{13}{2}\\) ways.  \n   - For each pair rank, choose 2 suits from 4: \\(\\binom{4}{2} = 6\\) ways per pair → \\(6^2 = 36\\).  \n   - Choose the 5th card (must not form a third pair or three-of-a-kind):  \n     - It must be of a different rank than either pair. There are \\(13 - 2 = 11\\) eligible ranks.  \n     - For each such rank, any of the 4 suits works → 4 choices.  \n   - So: \\(\\binom{13}{2} \\times 6^2 \\times 11 \\times 4\\).\n\n   Calculation:\n   \\[\n   \\binom{13}{2} = 78,\\quad 78 \\times 36 = 2,808,\\quad 2,808 \\times 44 = 123,552\n   \\]\n\n3. **Probability**:  \n   \\[\n   P = \\frac{123,552}{2,598,960}\n   \\]\n\n   Simplify: divide numerator and denominator by 48 → \\(2,574 / 54,145\\). Then by 3 → \\(858 / 18,048.3...\\) — let's do it properly via GCD.\n\n   Actually, compute GCD(123552, 2598960):\n   - Both divisible by 48?  \n     \\(123552 ÷ 48 = 2574\\), \\(2598960 ÷ 48 = 54145\\).  \n   - GCD(2574, 54145):  \n     \\(54145 ÷ 2574 ≈ 21.03\\) → try small factors:  \n     2574 = 2 × 3 × 11 × 39? Let's factor:  \n     \\(2574 = 2 \\times 1287 = 2 \\times 3 \\times 429 = 2 \\times 3 \\times 3 \\times 143 = 2 \\times 3^2 \\times 11 \\times 13\\).  \n     Check if 54145 divisible by any of these: not even, sum digits=19 (not div by 3), ends in 5 → try 11: \\(5-4+1-4+5 = 3\\) → no. Try 13: \\(54145 ÷ 13 = 4165\\). Yes!  \n     So GCD includes 2 × 9 × 13? Wait — we already divided by 48, so current fraction is 2574/54145.  \n     GCD(2574, 54145): since 54145 = 13 × 4165, and 2574 = 13 × 198, so divide by 13 → 198 / 4165.  \n     GCD(198, 4165): 198 = 2×9×11; 4165 not even, sum=16 (no 3), try 11: \\(4-1+6-5=4\\) → no. So GCD=1.\n\n   Final reduced fraction: **198 / 4165**.\n\n   Verify: \\(198 × 13 = 2574\\), \\(4165 × 13 = 54145\\). ✓  \n   And original: \\(123552 ÷ (48×13) = 123552 ÷ 624 = 198\\); \\(2598960 ÷ 624 = 4165\\). ✓\n\nFINAL: 198/4165",
+      "thinking_chars": 0,
+      "wall_s": 25.389753904999907,
+      "metrics": {
+        "wall_s": 25.389440903999912,
+        "done_reason": "stop",
+        "prompt_eval_count": 121,
+        "eval_count": 1060,
+        "perf": {
+          "load_s": 0.630791552,
+          "prompt_eval_s": 0.147279,
+          "eval_s": 24.585188,
+          "total_s_reported": 25.38574225,
+          "prompt_tps": 821.5699454776309,
+          "eval_tps": 43.11539126729477
+        }
+      }
+    },
+    {
+      "id": "math_linear_algebra_eigenvalues",
+      "domain": "math",
+      "score": 1.0,
+      "pass": true,
+      "detail": "values=[1, 3, 3], expected multiset=[1,3,3]",
+      "response": "The matrix is block-diagonal: top-left 2×2 block and bottom-right scalar 3.\n\nTop-left block: [[2,1],[1,2]]. Its eigenvalues are found from det([[2-λ,1],[1,2-λ]]) = (2-λ)² - 1 = λ² - 4λ + 3 = (λ-1)(λ-3). So eigenvalues are 1 and 3.\n\nThe bottom-right entry is 3, so that's another eigenvalue.\n\nMultiset: {1, 3, 3}.\n\nFINAL: {1, 3, 3}",
+      "thinking_chars": 0,
+      "wall_s": 3.9751886869999,
+      "metrics": {
+        "wall_s": 3.9750849090000884,
+        "done_reason": "stop",
+        "prompt_eval_count": 123,
+        "eval_count": 137,
+        "perf": {
+          "load_s": 0.654884282,
+          "prompt_eval_s": 0.128800999,
+          "eval_s": 3.079602,
+          "total_s_reported": 3.972421299,
+          "prompt_tps": 954.9615372160273,
+          "eval_tps": 44.48626803073904
+        }
+      }
+    },
+    {
+      "id": "math_calculus_integral",
+      "domain": "math",
+      "score": 1.0,
+      "pass": true,
+      "detail": "got_fraction='-1/9' in final, expected=-1/9",
+      "response": "I'll solve this definite integral step by step using integration by parts.\n\nThe integral is: ∫₀¹ x² · ln(x) dx\n\n**Integration by parts:** Let u = ln(x), dv = x²dx  \nThen du = (1/x)dx, v = x³/3\n\n∫ x²·ln(x) dx = (x³/3)·ln(x) - ∫ (x³/3)(1/x) dx  \n= (x³/3)·ln(x) - ∫ x²/3 dx  \n= (x³/3)·ln(x) - x³/9 + C\n\n**Evaluate from 0 to 1:**\n\nAt x = 1: (1/3)·ln(1) - 1/9 = 0 - 1/9 = -1/9\n\nAt x → 0⁺: lim_{x→0} [(x³/3)·ln(x)] - 0  \nSince x³·ln(x) → 0 as x → 0 (by L'Hôpital's rule), this limit is 0.\n\n**Result:** -1/9 - 0 = **-1/9**\n\nFINAL: -1/9",
+      "thinking_chars": 0,
+      "wall_s": 7.139913469000021,
+      "metrics": {
+        "wall_s": 7.1397476209999695,
+        "done_reason": "stop",
+        "prompt_eval_count": 108,
+        "eval_count": 265,
+        "perf": {
+          "load_s": 0.62915827,
+          "prompt_eval_s": 0.134947,
+          "eval_s": 6.307313,
+          "total_s_reported": 7.136822871,
+          "prompt_tps": 800.314197425656,
+          "eval_tps": 42.0147216413709
+        }
+      }
+    },
+    {
+      "id": "math_bayes_medical_test",
+      "domain": "math/statistics",
+      "score": 1.0,
+      "pass": true,
+      "detail": "got_fraction='1/6' in final, expected=1/6",
+      "response": "This is a classic Bayes' theorem problem. Let me work through it step by step.\n\n**Given:**\n- Prevalence (P(D)) = 1% = 0.01\n- Sensitivity (P(Pos|D)) = 99% = 0.99\n- Specificity (P(Neg|¬D)) = 95% = 0.95\n\n**Need:** P(D|Pos)\n\n**Bayes' Theorem:**\nP(D|Pos) = [P(Pos|D) × P(D)] / [P(Pos|D) × P(D) + P(Pos|¬D) × P(¬D)]\n\n**Calculate components:**\n- P(Pos|D) × P(D) = 0.99 × 0.01 = 0.0099\n- P(Pos|¬D) = 1 - specificity = 1 - 0.95 = 0.05\n- P(Pos|¬D) × P(¬D) = 0.05 × 0.99 = 0.0495\n\n**Denominator:** 0.0099 + 0.0495 = 0.0594\n\n**P(D|Pos):** 0.0099 / 0.0594 = 99/594 = **11/66 = 1/6**\n\n**Exact fraction:** 1/6\n**Approximate percent:** ~16.67%\n\nFINAL: 1/6 (approximately 16.67%)",
+      "thinking_chars": 0,
+      "wall_s": 8.93338195899969,
+      "metrics": {
+        "wall_s": 8.933185242000036,
+        "done_reason": "stop",
+        "prompt_eval_count": 131,
+        "eval_count": 352,
+        "perf": {
+          "load_s": 0.669259965,
+          "prompt_eval_s": 0.039642,
+          "eval_s": 8.200221,
+          "total_s_reported": 8.929508389,
+          "prompt_tps": 3304.5759547954194,
+          "eval_tps": 42.92567236907395
+        }
+      }
+    },
+    {
+      "id": "programming_lru_cache",
+      "domain": "programming",
+      "score": 1.0,
+      "pass": true,
+      "detail": "OK",
+      "response": "```python\nfrom collections import OrderedDict\n\n\nclass LRUCache:\n    def __init__(self, capacity: int) -> None:\n        self.capacity = capacity\n        self.cache = OrderedDict()\n\n    def get(self, key):\n        if key not in self.cache:\n            return -1\n        self.cache.move_to_end(key)\n        return self.cache[key]\n\n    def put(self, key, value):\n        if key in self.cache:\n            del self.cache[key]\n        self.cache[key] = value\n        if len(self.cache) > self.capacity:\n            self.cache.popitem(last=False)\n```",
+      "thinking_chars": 0,
+      "wall_s": 3.9458834639999623,
+      "metrics": {
+        "wall_s": 3.92905936499983,
+        "done_reason": "stop",
+        "prompt_eval_count": 107,
+        "eval_count": 135,
+        "perf": {
+          "load_s": 0.631474948,
+          "prompt_eval_s": 0.042827,
+          "eval_s": 3.167902,
+          "total_s_reported": 3.926161297,
+          "prompt_tps": 2498.423891470334,
+          "eval_tps": 42.6149546292783
+        }
+      }
+    },
+    {
+      "id": "programming_topological_sort_cycle",
+      "domain": "programming",
+      "score": 1.0,
+      "pass": true,
+      "detail": "OK",
+      "response": "```python\nfrom collections import deque\n\ndef topo_order(n: int, edges):\n    \"\"\"Return a topological ordering of nodes 0..n-1 given edge list (u,v) meaning u before v,\n    or None if the graph contains a cycle.\"\"\"\n    indeg = [0] * n\n    adj = [[] for _ in range(n)]\n\n    for u, v in edges:\n        adj[u].append(v)\n        indeg[v] += 1\n\n    q = deque(i for i in range(n) if indeg[i] == 0)\n    order = []\n\n    while q:\n        u = q.popleft()\n        order.append(u)\n        for v in adj[u]:\n            indeg[v] -= 1\n            if indeg[v] == 0:\n                q.append(v)\n\n    return order if len(order) == n else None\n```",
+      "thinking_chars": 0,
+      "wall_s": 5.517096475000017,
+      "metrics": {
+        "wall_s": 5.49907002000009,
+        "done_reason": "stop",
+        "prompt_eval_count": 119,
+        "eval_count": 197,
+        "perf": {
+          "load_s": 0.635830155,
+          "prompt_eval_s": 0.062465,
+          "eval_s": 4.718925,
+          "total_s_reported": 5.495198424,
+          "prompt_tps": 1905.0668374289603,
+          "eval_tps": 41.74679614530852
+        }
+      }
+    },
+    {
+      "id": "programming_interval_sweep",
+      "domain": "programming",
+      "score": 0.0,
+      "pass": false,
+      "detail": "Traceback (most recent call last):\n  File \"/tmp/tmpehyfk5kl/candidate.py\", line 24, in <module>\n    assert min_meeting_rooms([[0,30],[5,10],[15,20]]) == 2\nAssertionError",
+      "response": "```python\ndef min_meeting_rooms(intervals):\n    \"\"\"Return the minimum number of meeting rooms needed for a list of half-open intervals [start, end).\"\"\"\n    if not intervals:\n        return 0\n\n    starts = sorted(s for s, _ in intervals)\n    ends = sorted(e for _, e in intervals)\n\n    room_count = 1\n    end_idx = 1\n\n    for i in range(1, len(starts)):\n        if starts[i] < ends[end_idx]:\n            # A new meeting starts before the earliest current one ends → need another room\n            room_count += 1\n        else:\n            # The earliest ongoing meeting has ended (or finishes exactly when this one starts)\n            end_idx += 1\n\n    return room_count\n```",
+      "thinking_chars": 0,
+      "wall_s": 4.834053426000082,
+      "metrics": {
+        "wall_s": 4.818372380000255,
+        "done_reason": "stop",
+        "prompt_eval_count": 108,
+        "eval_count": 170,
+        "perf": {
+          "load_s": 0.621646902,
+          "prompt_eval_s": 0.042925,
+          "eval_s": 4.066574,
+          "total_s_reported": 4.813923537,
+          "prompt_tps": 2516.0163075131045,
+          "eval_tps": 41.80423127674548
+        }
+      }
+    },
+    {
+      "id": "programming_json_transform",
+      "domain": "programming/data",
+      "score": 1.0,
+      "pass": true,
+      "detail": "OK",
+      "response": "```python\ndef summarize_orders(orders):\n    result = {}\n    for order in orders:\n        if order[\"status\"] == \"paid\":\n            user = order[\"user\"]\n            total = order[\"total\"]\n            result[user] = result.get(user, 0) + total\n    return result\n```",
+      "thinking_chars": 0,
+      "wall_s": 2.4440804860000753,
+      "metrics": {
+        "wall_s": 2.420271681000031,
+        "done_reason": "stop",
+        "prompt_eval_count": 124,
+        "eval_count": 70,
+        "perf": {
+          "load_s": 0.620791484,
+          "prompt_eval_s": 0.061404,
+          "eval_s": 1.653033,
+          "total_s_reported": 2.416083989,
+          "prompt_tps": 2019.4124161292423,
+          "eval_tps": 42.346402037950845
+        }
+      }
+    },
+    {
+      "id": "programming_sql_window",
+      "domain": "programming/sql",
+      "score": 1.0,
+      "pass": true,
+      "detail": "checks={'select': True, 'window': True, 'lag_or_row_number': True, 'cte_or_subquery': True, 'event': True, 'date_filter': True}",
+      "response": "Let me think through this step by step.\n\nWe need to find users where:\n1. Their **first** event in calendar year 2025 is `'signup'`\n2. The **immediately next** event (after that first one) is `'purchase'`\n\nKey considerations:\n- \"First event in calendar year 2025\" means the earliest `created_at` where `EXTRACT(YEAR FROM created_at) = 2025`, regardless of whether there were events before 2025.\n- \"Immediately next event\" means the very next row chronologically for that user, not just the next one in 2025.\n\nApproach: Use a window function `LEAD` or self-join to get the first 2025 event and check what comes right after it.\n\nLet me write this carefully:\n\n```sql\nSELECT u.user_id\nFROM (\n    SELECT user_id, created_at,\n           LEAD(created_at) OVER (PARTITION BY user_id ORDER BY created_at) AS next_created_at,\n           LEAD(event_type) OVER (PARTITION BY user_id ORDER BY created_at) AS next_event_type\n    FROM events\n    WHERE EXTRACT(YEAR FROM created_at) = 2025\n) u\nWHERE u.event_type = 'signup'\n  AND u.next_event_type = 'purchase';\n```\n\nWait, but this only considers rows in 2025. The \"immediately next event\" might be outside 2025 if the user's first 2025 event is their last event ever. Let me re-read: \"whose immediately next event was 'purchase'\" — this means the very next event chronologically for that user, regardless of year.\n\nSo I need to compare against ALL events, not just 2025 ones. The correct approach:\n\n```sql\nSELECT e.user_id\nFROM events e\nWHERE EXTRACT(YEAR FROM e.created_at) = 2025\n  AND e.event_type = 'signup'\n  AND NOT EXISTS (\n      SELECT 1\n      FROM events e2\n      WHERE e2.user_id = e.user_id\n        AND e2.created_at < e.created_at\n  )\n  AND EXISTS (\n      SELECT 1\n      FROM events e3\n      WHERE e3.user_id = e.user_id\n        AND e3.created_at > e.created_at\n        AND NOT EXISTS (\n            SELECT 1\n            FROM events e4\n            WHERE e4.user_id = e3.user_id\n              AND e4.created_at < e3.created_at\n              AND e4.created_at >= e.created_at\n        )\n      LIMIT 1\n  );\n```\n\nHmm, this is getting convoluted. Let me use a cleaner approach with window functions over all events:\n\n```sql\nSELECT user_id\nFROM (\n    SELECT user_id, created_at, event_type,\n           LEAD(created_at) OVER w AS next_created_at,\n           LEAD(event_type) OVER w AS next_event_type\n    FROM events\n    WHERE EXTRACT(YEAR FROM created_at) = 2025\n) t\nWHERE event_type = 'signup'\n  AND next_event_type = 'purchase';\n```\n\nWait — but this only considers rows that are in 2025. If the first 2025 event is a signup, and the very next event (which could be before or after 2025) is a purchase... Actually no: if we're looking at the first event IN 2025, then by definition it's in 2025. The \"immediately next\" means the next chronological event for that user overall.\n\nBut my window function only partitions over rows where `EXTRACT(YEAR FROM created_at) = 2025`. So if there are events outside 2025, they won't be in this partition and won't affect the LEAD calculation. That's actually correct — we want to compare against ALL events for that user, not just 2025 ones.\n\nLet me reconsider: I should use window functions over ALL events, then filter where the first event is in 2025:\n\n```sql\nSELECT user_id\nFROM (\n    SELECT user_id, created_at, event_type,\n           LEAD(created_at) OVER w AS next_created_at,\n           LEAD(event_type) OVER w AS next_event_type,\n           ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY created_at) AS rn\n    FROM events\n) t\nWHERE rn = 1 AND EXTRACT(YEAR FROM created_at) = 2025\n  AND next_event_type = 'purchase';\n```\n\nThis is cleaner: find each user's first event overall, check it's in 2025 and is a signup, then verify the very next event (across all time) is a purchase.\n\nActually wait — I need to be more careful. The `rn = 1` gives the first event for that user across ALL events. Then I check if that first event is in 2025 AND is a signup. But what if a user's first event overall was before 2025? Then they wouldn't match, which is correct — we want users whose FIRST event IN 2025 (not necessarily their absolute first) is a signup.\n\nHmm, let me re-read the question: \"users whose first event in calendar year 2025 was 'signup'\". This means: among all events for this user that occurred in 2025,",
+      "thinking_chars": 0,
+      "wall_s": 28.954964760000166,
+      "metrics": {
+        "wall_s": 28.954452878999746,
+        "done_reason": "length",
+        "prompt_eval_count": 132,
+        "eval_count": 1200,
+        "perf": {
+          "load_s": 0.53673398,
+          "prompt_eval_s": 0.143114,
+          "eval_s": 28.202003,
+          "total_s_reported": 28.946208767,
+          "prompt_tps": 922.34162974971,
+          "eval_tps": 42.55016922025006
+        }
+      }
+    },
+    {
+      "id": "physics_projectile_angle",
+      "domain": "science/physics",
+      "score": 1.0,
+      "pass": true,
+      "detail": "values=[11.5], expected≈11.540 deg",
+      "response": "We have a projectile launched from ground level, landing at the same height, range R = 100 m, final speed v_f = 50 m/s (same as initial speed since no air resistance and same elevation). So |v_i| = |v_f| = 50 m/s.\n\nFor symmetric projectile motion:\n- Range: R = (v₀² sin(2θ)) / g\n- Speed at landing equals launch speed, so that's automatically satisfied for any θ in this setup.\n\nGiven v₀ = 50 m/s, g = 9.8 m/s², R = 100 m:\n\nsin(2θ) = R·g / v₀² = (100)(9.8) / (50)² = 980 / 2500 = 0.392\n\nSo 2θ = arcsin(0.392). Compute:\narcsin(0.392) ≈ ? \n\nsin(23°) ≈ 0.3907, sin(23.1°) ≈ 0.3925 → so about 23.06°.\n\nThus 2θ ≈ 23.06°, θ ≈ 11.53°.\n\nThe other solution: 2θ = 180° − 23.06° = 156.94°, θ ≈ 78.47°.\n\nSmaller angle ≈ **11.5°** (to one decimal). Let me compute more precisely:\n\narcsin(0.392):\nUsing Taylor or just refine: sin⁻¹(0.392) in degrees.\n\nLet x = 0.392. \nθ_rad ≈ x + x³/6 + ... but better to use calculator-style estimate.\n\nActually, let me compute numerically:\nsin(23°) = sin(23 × π/180). 23π/180 ≈ 0.4014 rad. sin(0.4014) ≈ 0.4014 − 0.4014³/6 ≈ 0.4014 − 0.0659/6? Wait, 0.4014³ = 0.06478, /6 = 0.01080. So sin ≈ 0.4014 − 0.0108 = 0.3906. Yes ~0.3906.\n\nsin(23.1°): 23.1×π/180 = 0.4031 rad. sin ≈ 0.4031 − (0.4031)³/6. 0.4031³ = 0.0656, /6 = 0.01093. sin ≈ 0.4031 − 0.01093 = 0.3922.\n\nsin(23.12°): 23.12×π/180 = 0.4035 rad. cube: ~0.0657, /6=0.01095. sin≈0.4035−0.01095=0.39255.\n\nWe want sin = 0.392 exactly → between 23.1° (0.3922) and slightly below. So ~23.08°.\n\nThus θ ≈ 11.54°.\n\nRounded to reasonable precision: **≈ 11.5°**.\n\nFINAL: 11.5",
+      "thinking_chars": 0,
+      "wall_s": 20.04577839800004,
+      "metrics": {
+        "wall_s": 20.045561061999706,
+        "done_reason": "stop",
+        "prompt_eval_count": 136,
+        "eval_count": 828,
+        "perf": {
+          "load_s": 0.682456345,
+          "prompt_eval_s": 0.169627,
+          "eval_s": 19.187194,
+          "total_s_reported": 20.04186908,
+          "prompt_tps": 801.7591539082811,
+          "eval_tps": 43.15378267400642
+        }
+      }
+    },
+    {
+      "id": "physics_circuit_current",
+      "domain": "science/physics",
+      "score": 1.0,
+      "pass": true,
+      "detail": "values=[2.0], need 2 A",
+      "response": "Let me work through this step by step.\n\n**Circuit description:**\n- A 12 V ideal battery\n- Connected to a 4 Ω resistor in series with a parallel pair of 6 Ω and 3 Ω resistors\n\n**Step 1: Find the equivalent resistance of the parallel pair (6 Ω || 3 Ω)**\n\nFor two resistors in parallel:\nR_parallel = (R₁ × R₂) / (R₁ + R₂) = (6 × 3) / (6 + 3) = 18/9 = **2 Ω**\n\n**Step 2: Find the total equivalent resistance of the circuit**\n\nThe 4 Ω resistor is in series with the 2 Ω parallel combination:\nR_total = 4 + 2 = **6 Ω**\n\n**Step 3: Use Ohm's Law to find the total current**\n\nI = V / R = 12 V / 6 Ω = **2 A**\n\nFINAL: 2",
+      "thinking_chars": 0,
+      "wall_s": 5.359555119000106,
+      "metrics": {
+        "wall_s": 5.359430258999964,
+        "done_reason": "stop",
+        "prompt_eval_count": 132,
+        "eval_count": 212,
+        "perf": {
+          "load_s": 0.600684767,
+          "prompt_eval_s": 0.039445,
+          "eval_s": 4.696259,
+          "total_s_reported": 5.356992043,
+          "prompt_tps": 3346.4317403980226,
+          "eval_tps": 45.14231433998849
+        }
+      }
+    },
+    {
+      "id": "chemistry_buffer_ph",
+      "domain": "science/chemistry",
+      "score": 1.0,
+      "pass": true,
+      "detail": "values=[5.06], expected≈5.061",
+      "response": "The Henderson-Hasselbalch equation is:\n\npH = pKa + log([A⁻]/[HA])\n\nWhere [A⁻] = acetate = 0.20 M and [HA] = acetic acid = 0.10 M.\n\npH = 4.76 + log(0.20/0.10)\npH = 4.76 + log(2)\npH = 4.76 + 0.301\npH ≈ 5.06\n\nFINAL: 5.06",
+      "thinking_chars": 0,
+      "wall_s": 3.593087272000048,
+      "metrics": {
+        "wall_s": 3.592895593999856,
+        "done_reason": "stop",
+        "prompt_eval_count": 130,
+        "eval_count": 128,
+        "perf": {
+          "load_s": 0.593623808,
+          "prompt_eval_s": 0.130912,
+          "eval_s": 2.797286,
+          "total_s_reported": 3.590142484,
+          "prompt_tps": 993.0334881447079,
+          "eval_tps": 45.758638909285644
+        }
+      }
+    },
+    {
+      "id": "biology_central_dogma_exception",
+      "domain": "science/biology",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]",
+      "response": "The enzyme that allows retroviruses to make DNA from an RNA genome is **reverse transcriptase** (also called reverse transcription).\n\nThis is an exception to the simplest central dogma because:\n- The classic central dogma states: **DNA → RNA → Protein** (information flows only in one direction)\n- Reverse transcriptase enables: **RNA → DNA**, which goes *backward* against the standard flow\n- This means genetic information can move from RNA back into DNA, violating the unidirectional rule of the simplest version of the central dogma\n\nFINAL: reverse transcriptase",
+      "thinking_chars": 0,
+      "wall_s": 3.561222752000049,
+      "metrics": {
+        "wall_s": 3.561138438999933,
+        "done_reason": "stop",
+        "prompt_eval_count": 116,
+        "eval_count": 120,
+        "perf": {
+          "load_s": 0.634833477,
+          "prompt_eval_s": 0.126091,
+          "eval_s": 2.718396,
+          "total_s_reported": 3.558126794,
+          "prompt_tps": 919.9704974978388,
+          "eval_tps": 44.143678845907665
+        }
+      }
+    },
+    {
+      "id": "thermo_isothermal_work",
+      "domain": "science/thermodynamics",
+      "score": 1.0,
+      "pass": true,
+      "detail": "values=[5743.1], expected≈5743.1 J or 5.74 kJ",
+      "response": "The work done by an ideal gas during a reversible isothermal expansion is:\n\n$$w = nRT \\ln\\left(\\frac{V_2}{V_1}\\right)$$\n\nGiven:\n- $n = 1$ mol\n- $R = 8.314$ J/mol/K\n- $T = 300$ K\n- $V_1 = 1$ L, $V_2 = 10$ L\n\n$$w = (1)(8.314)(300) \\ln\\left(\\frac{10}{1}\\right)$$\n$$w = 2494.2 \\times \\ln(10)$$\n$$\\ln(10) \\approx 2.302585$$\n\n$$w = 2494.2 \\times 2.302585 \\approx 5743.1$$\n\nFINAL: 5743.1",
+      "thinking_chars": 0,
+      "wall_s": 5.803874733000157,
+      "metrics": {
+        "wall_s": 5.803712682999958,
+        "done_reason": "stop",
+        "prompt_eval_count": 139,
+        "eval_count": 214,
+        "perf": {
+          "load_s": 0.616346558,
+          "prompt_eval_s": 0.039282,
+          "eval_s": 5.06608,
+          "total_s_reported": 5.800876974,
+          "prompt_tps": 3538.516368820325,
+          "eval_tps": 42.241733253324064
+        }
+      }
+    },
+    {
+      "id": "logic_knights_knaves",
+      "domain": "logic",
+      "score": 1.0,
+      "pass": true,
+      "detail": "need A=knave, B=knight; final='A is a knave and B is a knight'",
+      "response": "Let's analyze this step by step using the rules of knights (always true) and knaves (always false).\n\n**Case 1: A is a knight.**\n- Then \"B is a knave\" is true → B is a knave.\n- B says \"A and I are of opposite types.\" Since B is a knave, this statement must be false.\n- The actual situation: A is a knight, B is a knave → they ARE of opposite types.\n- But B (a knave) said it's true → contradiction! A knave can't say something that's actually true.\n\n**Case 2: A is a knave.**\n- Then \"B is a knave\" is false → B is a knight.\n- B says \"A and I are of opposite types.\" Since B is a knight, this must be true.\n- Actual situation: A is a knave, B is a knight → they ARE of opposite types. ✓ Consistent!\n\n**Answer:** A is a knave, B is a knight.\n\nFINAL: A is a knave and B is a knight",
+      "thinking_chars": 0,
+      "wall_s": 6.285879981000107,
+      "metrics": {
+        "wall_s": 6.285114852999868,
+        "done_reason": "stop",
+        "prompt_eval_count": 130,
+        "eval_count": 239,
+        "perf": {
+          "load_s": 0.63754772,
+          "prompt_eval_s": 0.041006,
+          "eval_s": 5.517092,
+          "total_s_reported": 6.281539006,
+          "prompt_tps": 3170.2677656928254,
+          "eval_tps": 43.31992288691217
+        }
+      }
+    },
+    {
+      "id": "logic_scheduling",
+      "domain": "logic",
+      "score": 1.0,
+      "pass": true,
+      "detail": "values=[9.0], expected=9, best_abs_err=0.0",
+      "response": "**Step-by-step derivation:**\n\n- Tasks: A(3), B(2), C(4), D(2), E(1)\n- Dependencies: A→C, B→C, C→D, B→E\n- Two identical workers; nonpreemptive.\n\n**Earliest start times (ES):**\n- A: 0\n- B: 0\n- C: max(A,B)=3\n- D: C+4=7\n- E: B+2=4\n\n**Try schedule:**\n\n| Time | Worker 1 | Worker 2 |\n|------|----------|----------|\n| [0,3) | A (dur 3) | B (dur 2, ends at 2) → idle [2,3) |\n| [3,7) | C (dur 4) | D? E? |\n\nAt t=3: only C is ready. Assign to W1.  \nW2 free from t=3 onward. Ready tasks after t=3: none yet (E needs B done at 2 — but E can start as soon as B finishes, i.e., t=2; however at t=3 both workers are busy? No — W2 was idle [2,3). So at t=3, W2 is free.\n\nAt t=3: C starts on W1. What about W2? E is ready (B done at 2), D not yet (needs C). Start E on W2 at t=3.\n\n- W1: C [3,7)\n- W2: E [3,4) → free at 4\n\nAt t=4: W2 free. Ready: D? No (C ends at 7). Nothing else ready. Idle until t=7.\n\nAt t=7: W1 finishes C. Start D on W1 [7,9). W2 idle.\n\nProject completes at **t=9**.\n\n**Can we do better?** Try swapping E and C?  \n- A [0,3), B [0,2) → same as before.\n- At t=3: only C ready. Must start C somewhere. So C must occupy one worker from 3 to 7. No way around that.\n\nCould we overlap differently? What if we delay something? No — delaying C or A/B only hurts.\n\n**Minimum = 9.**\n\nFINAL: 9",
+      "thinking_chars": 0,
+      "wall_s": 12.866794075000143,
+      "metrics": {
+        "wall_s": 12.866550798999924,
+        "done_reason": "stop",
+        "prompt_eval_count": 144,
+        "eval_count": 518,
+        "perf": {
+          "load_s": 0.646000603,
+          "prompt_eval_s": 0.157095,
+          "eval_s": 11.988472,
+          "total_s_reported": 12.862319865,
+          "prompt_tps": 916.642795760527,
+          "eval_tps": 43.20817532042449
+        }
+      }
+    },
+    {
+      "id": "data_extraction_tricky_json",
+      "domain": "data/instruction",
+      "score": 1.0,
+      "pass": true,
+      "detail": "obj={'user_id': 42, 'action': 'deploy', 'success': False}, expected={'user_id': 42, 'action': 'deploy', 'success': False}",
+      "response": "{\"user_id\":42,\"action\":\"deploy\",\"success\":false}",
+      "thinking_chars": 0,
+      "wall_s": 1.088562717000059,
+      "metrics": {
+        "wall_s": 1.0882513900000959,
+        "done_reason": "stop",
+        "prompt_eval_count": 120,
+        "eval_count": 16,
+        "perf": {
+          "load_s": 0.673063266,
+          "prompt_eval_s": 0.060666,
+          "eval_s": 0.331497,
+          "total_s_reported": 1.085678476,
+          "prompt_tps": 1978.0437147660964,
+          "eval_tps": 48.2658968256123
+        }
+      }
+    },
+    {
+      "id": "security_hashing_passwords",
+      "domain": "security",
+      "score": 1.0,
+      "pass": true,
+      "detail": "salt=True, cost/memory-hard=True, rejects_plain_sha=True",
+      "response": "No, plain SHA-256(password) is **not** adequate for storing user passwords. Here's why:\n\n1. **SHA-256 is fast and unsalted**: It can be computed in microseconds on modern hardware, making it vulnerable to brute-force and rainbow table attacks. An attacker who obtains the hash database can try billions of candidate passwords per second.\n2. **No built-in resistance to parallelization**: SHA-256 runs efficiently on GPUs and ASICs, which are orders of magnitude faster than CPUs for password cracking.\n\nA better password hashing scheme should have:\n\n1. **Computational slowness (high iteration count / expensive primitive)** – e.g., using Argon2id, bcrypt, or scrypt so that each hash takes milliseconds to compute, drastically slowing brute-force attacks.\n2. **Salt per user** – a unique random value stored alongside the hash ensures that identical passwords produce different hashes and defeats precomputed rainbow tables.\n\nFINAL: No; two required properties are (1) high computational cost per hash (slow, memory-hard) and (2) a unique salt per password.",
+      "thinking_chars": 0,
+      "wall_s": 6.117468969000129,
+      "metrics": {
+        "wall_s": 6.117303731999982,
+        "done_reason": "stop",
+        "prompt_eval_count": 118,
+        "eval_count": 234,
+        "perf": {
+          "load_s": 0.579295557,
+          "prompt_eval_s": 0.131889999,
+          "eval_s": 5.338293,
+          "total_s_reported": 6.113655746,
+          "prompt_tps": 894.6849715269161,
+          "eval_tps": 43.834236899323436
+        }
+      }
+    }
+  ]
+}

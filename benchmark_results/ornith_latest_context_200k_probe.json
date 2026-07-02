@@ -1,0 +1,27 @@
+{
+  "wall_s": 379.8535918870002,
+  "total_duration": 379449588789,
+  "load_duration": 9564930778,
+  "prompt_eval_count": 207506,
+  "prompt_eval_duration": 364687027000,
+  "eval_count": 8,
+  "eval_duration": 4100622000,
+  "done_reason": "stop",
+  "http_status": 200,
+  "prompt_chars": 845097,
+  "perf": {
+    "load_s": 9.564930778,
+    "prompt_eval_s": 364.687027,
+    "eval_s": 4.100622,
+    "total_s_reported": 379.449588789,
+    "prompt_tps": 568.9974817777107,
+    "eval_tps": 1.9509235428186258
+  },
+  "label": "~200k_ctx_middle",
+  "lines": 7680,
+  "position": "middle",
+  "num_ctx": 262144,
+  "code": "KITE-200K",
+  "response": "KITE-200K",
+  "success": true
+}

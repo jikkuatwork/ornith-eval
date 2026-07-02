@@ -1,0 +1,476 @@
+{
+  "model": "ornith:latest",
+  "base_url": "http://127.0.0.1:11434",
+  "started_at_utc": "20260702T070139Z",
+  "turns": 340,
+  "num_ctx": 32768,
+  "think": false,
+  "method": "synthetic filler assistant replies; model called for probes; actual probe answers appended",
+  "canonical_events": {
+    "3": "CANON T003: Tom was playing with his red ball when he saw a yellow ox far away, then Tom went back home surprised.",
+    "18": "CANON T018: Elena lent Priya her striped scarf before Priya boarded the train. Elena kept the black umbrella.",
+    "27": "CANON T027: Maya put the brass key inside the blue vase.",
+    "44": "CANON T044: The lab cabinet code is 4192 for now.",
+    "58": "CANON T058: Nora's mentor is Ivo, and Ivo's codeword is glacier.",
+    "64": "CANON T064: Nora lent the copper compass to Jules.",
+    "82": "UPDATE T082: Maya moved the brass key out of the blue vase and into the green drawer.",
+    "96": "CANON T096: Nina's red box contains the map, the blue box contains the lens, and the green box contains the coin.",
+    "108": "UPDATE T108: The lab cabinet code changed from 4192 to 7305. The old code should be ignored.",
+    "124": "UPDATE T124: Jules handed the copper compass to Priya. Priya currently has it.",
+    "137": "CANON T137: Omar received Nina's red box and did not open it.",
+    "169": "CANON T169: If the user later writes lantern check, the correct response is violet rook.",
+    "211": "UPDATE T211: The archive token is hexagonal, made of copper, weighs 7 grams, and is stored under the orchid pot."
+  },
+  "summary": {
+    "pass": 13,
+    "total": 13,
+    "accuracy": 1.0,
+    "by_category": {
+      "early_fact_recall": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "entity_attribute_binding": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "state_update": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "coreference": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "state_update_numeric": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "state_update_entity": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "multi_step_object_reasoning": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "instruction_memory": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "multi_hop_relation": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "multi_attribute_recall": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "late_composite_reasoning": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "very_late_consistency": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      },
+      "late_event_reason": {
+        "score": 1.0,
+        "pass": 1,
+        "total": 1
+      }
+    },
+    "by_turn_gap": {
+      "0-75": {
+        "pass": 8,
+        "total": 8
+      },
+      "76-150": {
+        "pass": 1,
+        "total": 1
+      },
+      "151-250": {
+        "pass": 1,
+        "total": 1
+      },
+      "251+": {
+        "pass": 3,
+        "total": 3
+      }
+    },
+    "total_wall_s": 22.237661597000624,
+    "mean_wall_s": 1.7105893536154326,
+    "median_wall_s": 1.3006088160000218,
+    "p95_wall_s": 2.3876298159993894,
+    "max_prompt_eval_count": 13908,
+    "mean_prompt_eval_count": 7697.692307692308,
+    "mean_eval_count": 8.692307692307692,
+    "mean_prompt_tps": 11778.990137552457,
+    "mean_eval_tps": 61.75604469387364
+  },
+  "probes": [
+    {
+      "id": "tom_ball_mid",
+      "category": "early_fact_recall",
+      "after_turn": 55,
+      "fact_turn": 3,
+      "turn_gap": 52,
+      "question": "PROBE P01: In the old Tom story, what color was Tom's ball? Answer one word.",
+      "response": "Red",
+      "score": 1.0,
+      "pass": true,
+      "detail": "expected='red'; got='Red'",
+      "wall_s": 6.597186484000304,
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "prompt_eval_count": 2319,
+        "eval_count": 2,
+        "perf": {
+          "load_s": 5.089426786,
+          "prompt_eval_s": 1.46675,
+          "eval_s": 0.022625,
+          "total_s_reported": 6.595196805,
+          "prompt_tps": 1581.0465314470769,
+          "eval_tps": 88.39779005524862
+        }
+      }
+    },
+    {
+      "id": "tom_ox_mid",
+      "category": "entity_attribute_binding",
+      "after_turn": 75,
+      "fact_turn": 3,
+      "turn_gap": 72,
+      "question": "PROBE P02: In Tom's story, what animal did he see and what color was it?",
+      "response": "Yellow ox",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='Yellow ox'",
+      "wall_s": 1.0572730390003926,
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "prompt_eval_count": 3154,
+        "eval_count": 3,
+        "perf": {
+          "load_s": 0.440281448,
+          "prompt_eval_s": 0.554134,
+          "eval_s": 0.049024,
+          "total_s_reported": 1.055945221,
+          "prompt_tps": 5691.764085943111,
+          "eval_tps": 61.19451697127938
+        }
+      }
+    },
+    {
+      "id": "key_after_update",
+      "category": "state_update",
+      "after_turn": 90,
+      "fact_turn": 82,
+      "turn_gap": 8,
+      "question": "PROBE P03: Where is Maya's brass key now? Use the latest update.",
+      "response": "Green drawer",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='Green drawer'",
+      "wall_s": 0.8353984049999781,
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "prompt_eval_count": 3783,
+        "eval_count": 3,
+        "perf": {
+          "load_s": 0.344324422,
+          "prompt_eval_s": 0.426979,
+          "eval_s": 0.048345,
+          "total_s_reported": 0.834186508,
+          "prompt_tps": 8859.920511313203,
+          "eval_tps": 62.05398696866274
+        }
+      }
+    },
+    {
+      "id": "train_coreference",
+      "category": "coreference",
+      "after_turn": 104,
+      "fact_turn": 18,
+      "turn_gap": 86,
+      "question": "PROBE P04: Who boarded the train with the striped scarf?",
+      "response": "Priya",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='Priya'",
+      "wall_s": 0.8336806690003868,
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "prompt_eval_count": 4380,
+        "eval_count": 3,
+        "perf": {
+          "load_s": 0.350241988,
+          "prompt_eval_s": 0.417116,
+          "eval_s": 0.046127,
+          "total_s_reported": 0.832475573,
+          "prompt_tps": 10500.676070925114,
+          "eval_tps": 65.03783033797993
+        }
+      }
+    },
+    {
+      "id": "cabinet_code_current",
+      "category": "state_update_numeric",
+      "after_turn": 118,
+      "fact_turn": 108,
+      "turn_gap": 10,
+      "question": "PROBE P05: What is the current lab cabinet code? Return only the code.",
+      "response": "7305",
+      "score": 1.0,
+      "pass": true,
+      "detail": "nums=['7305']; expected=7305; response='7305'",
+      "wall_s": 0.8972139659999812,
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "prompt_eval_count": 5009,
+        "eval_count": 5,
+        "perf": {
+          "load_s": 0.347677618,
+          "prompt_eval_s": 0.438928,
+          "eval_s": 0.090418,
+          "total_s_reported": 0.895935961,
+          "prompt_tps": 11411.894433711224,
+          "eval_tps": 55.29872370545688
+        }
+      }
+    },
+    {
+      "id": "compass_current_holder",
+      "category": "state_update_entity",
+      "after_turn": 150,
+      "fact_turn": 124,
+      "turn_gap": 26,
+      "question": "PROBE P06: Who currently has the copper compass?",
+      "response": "Priya",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='Priya'",
+      "wall_s": 1.2698468169992339,
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "prompt_eval_count": 6264,
+        "eval_count": 3,
+        "perf": {
+          "load_s": 0.366401374,
+          "prompt_eval_s": 0.831841,
+          "eval_s": 0.046469,
+          "total_s_reported": 1.268600644,
+          "prompt_tps": 7530.285234798476,
+          "eval_tps": 64.55916847791
+        }
+      }
+    },
+    {
+      "id": "map_holder_box_reasoning",
+      "category": "multi_step_object_reasoning",
+      "after_turn": 176,
+      "fact_turn": 137,
+      "turn_gap": 39,
+      "question": "PROBE P07: Who has the map now? Briefly infer from the box facts.",
+      "response": "Omar",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='Omar'",
+      "wall_s": 1.156778545000634,
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "prompt_eval_count": 7338,
+        "eval_count": 3,
+        "perf": {
+          "load_s": 0.356287372,
+          "prompt_eval_s": 0.722873,
+          "eval_s": 0.04841,
+          "total_s_reported": 1.155428615,
+          "prompt_tps": 10151.16071564438,
+          "eval_tps": 61.97066721751704
+        }
+      }
+    },
+    {
+      "id": "lantern_instruction",
+      "category": "instruction_memory",
+      "after_turn": 205,
+      "fact_turn": 169,
+      "turn_gap": 36,
+      "question": "PROBE P08: lantern check",
+      "response": "Violet rook",
+      "score": 1.0,
+      "pass": true,
+      "detail": "expected='violet rook'; got='Violet rook'",
+      "wall_s": 1.3006088160000218,
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "prompt_eval_count": 8501,
+        "eval_count": 5,
+        "perf": {
+          "load_s": 0.35208824,
+          "prompt_eval_s": 0.797928,
+          "eval_s": 0.090979,
+          "total_s_reported": 1.299281708,
+          "prompt_tps": 10653.843454547277,
+          "eval_tps": 54.9577374998626
+        }
+      }
+    },
+    {
+      "id": "multi_hop_codeword",
+      "category": "multi_hop_relation",
+      "after_turn": 235,
+      "fact_turn": 58,
+      "turn_gap": 177,
+      "question": "PROBE P09: What is the codeword associated with the mentor of the person who originally lent the copper compass?",
+      "response": "Glacier",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='Glacier'",
+      "wall_s": 1.310724902000402,
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "prompt_eval_count": 9741,
+        "eval_count": 3,
+        "perf": {
+          "load_s": 0.361804172,
+          "prompt_eval_s": 0.841816,
+          "eval_s": 0.04717,
+          "total_s_reported": 1.309351907,
+          "prompt_tps": 11571.41228011822,
+          "eval_tps": 63.5997456010176
+        }
+      }
+    },
+    {
+      "id": "archive_token_combo",
+      "category": "multi_attribute_recall",
+      "after_turn": 255,
+      "fact_turn": 211,
+      "turn_gap": 44,
+      "question": "PROBE P10: Give the archive token's shape, material, weight, and storage location.",
+      "response": "Hexagonal, copper, 7 grams, under the orchid pot",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing_slots=[]; response='Hexagonal, copper, 7 grams, under the orchid pot'",
+      "wall_s": 1.3880632110003717,
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "prompt_eval_count": 10575,
+        "eval_count": 15,
+        "perf": {
+          "load_s": 0.410038533,
+          "prompt_eval_s": 0.597644,
+          "eval_s": 0.313607,
+          "total_s_reported": 1.38650862,
+          "prompt_tps": 17694.48032608041,
+          "eval_tps": 47.8305650065209
+        }
+      }
+    },
+    {
+      "id": "composite_late_json",
+      "category": "late_composite_reasoning",
+      "after_turn": 285,
+      "fact_turn": 3,
+      "turn_gap": 282,
+      "question": "PROBE P11: Return compact JSON with keys ball_color,current_code,key_location,compass_holder for Tom/Maya/lab/compass facts.",
+      "response": "```json\n{\n  \"ball_color\": \"red\",\n  \"current_code\": \"7305\",\n  \"key_location\": \"green drawer\",\n  \"compass_holder\": \"Priya\"\n}\n```",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing_slots=[]; response='```json\\n{\\n  \"ball_color\": \"red\",\\n  \"current_code\": \"7305\",\\n  \"key_location\": \"green drawer\",\\n  \"compass_holder\": \"Priya\"\\n}\\n```'",
+      "wall_s": 2.3876298159993894,
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "prompt_eval_count": 11814,
+        "eval_count": 50,
+        "perf": {
+          "load_s": 0.361308316,
+          "prompt_eval_s": 0.854702,
+          "eval_s": 1.095491,
+          "total_s_reported": 2.386015631,
+          "prompt_tps": 13822.36147803562,
+          "eval_tps": 45.64163466427383
+        }
+      }
+    },
+    {
+      "id": "tom_ball_very_late_consistency",
+      "category": "very_late_consistency",
+      "after_turn": 320,
+      "fact_turn": 3,
+      "turn_gap": 317,
+      "question": "PROBE P12: Hundreds of turns later: what was the color of Tom's ball? One word only.",
+      "response": "Red",
+      "score": 1.0,
+      "pass": true,
+      "detail": "expected='red'; got='Red'",
+      "wall_s": 1.6691719609998472,
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "prompt_eval_count": 13284,
+        "eval_count": 2,
+        "perf": {
+          "load_s": 0.482514969,
+          "prompt_eval_s": 1.005954,
+          "eval_s": 0.023584,
+          "total_s_reported": 1.667489607,
+          "prompt_tps": 13205.375196082525,
+          "eval_tps": 84.80325644504748
+        }
+      }
+    },
+    {
+      "id": "tom_surprise_late",
+      "category": "late_event_reason",
+      "after_turn": 335,
+      "fact_turn": 3,
+      "turn_gap": 332,
+      "question": "PROBE P13: Why did Tom go back home surprised? Answer with the remembered event.",
+      "response": "Because he saw a yellow ox far away while playing with his red ball.",
+      "score": 1.0,
+      "pass": true,
+      "detail": "missing=[]; response='Because he saw a yellow ox far away while playing with his red ball.'",
+      "wall_s": 1.534084965999682,
+      "metrics": {
+        "http_status": 200,
+        "done_reason": "stop",
+        "prompt_eval_count": 13908,
+        "eval_count": 16,
+        "perf": {
+          "load_s": 0.613183609,
+          "prompt_eval_s": 0.456709,
+          "eval_s": 0.336963,
+          "total_s_reported": 1.531815915,
+          "prompt_tps": 30452.651469535307,
+          "eval_tps": 47.482958069580334
+        }
+      }
+    }
+  ]
+}

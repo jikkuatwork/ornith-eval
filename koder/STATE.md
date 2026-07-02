@@ -1,5 +1,5 @@
 ---
-updated_at: "02 Jul 2026 | 02:49 PM IST"
+updated_at: "02 Jul 2026 | 03:22 PM IST"
 ---
 
 # Koder State
@@ -7,18 +7,18 @@ updated_at: "02 Jul 2026 | 02:49 PM IST"
 ## Past
 
 - Koder-pattern thin operator scaffold was initialized and committed.
-- Ornith performance, tough mixed-domain, and conversational-context eval harnesses/reports were added.
-- Modular eval framework was added under `evals/` with special suites for convoluted conversation, math puzzles, difficult programming, hard facts, and Kerala core.
+- Ornith performance, tough mixed-domain, conversational-context, and modular special-suite eval harnesses/reports were added.
+- Full modular suite run was completed and recorded: combined `47/56` across deep conversation, math puzzles, programming, hard facts, and Kerala core.
 
 ## Present
 
 - Durable operator files live under `koder/`; root `AGENTS.md` and `.pi/skills/{open,close}` point into the scaffold.
-- One-off harnesses remain at repo root; reusable suite runner is `evals/runner.py` with graders in `evals/graders.py` and suite JSON in `evals/suites/`.
-- Reports and raw outputs live in `benchmark_results/`; modular suite smoke outputs are committed with `modular_eval_*` filenames.
-- Current evidence shows strong local performance and conversational retention, with caveats around formatting, coding edge cases, and huge-context latency.
+- Reusable suite runner is `evals/runner.py`; graders are in `evals/graders.py`; suite JSON lives in `evals/suites/`.
+- Latest modular report is `ORNITH_MODULAR_EVAL_REPORT.md`; latest raw outputs use `benchmark_results/modular_eval_*20260702T094*.{json,md}`.
+- Current evidence: strong long-context conversation and hard facts; good math; weak one-shot difficult programming; Kerala Malayalam transliteration words need caution.
 
 ## Future
 
-- Run full modular suites with `python3 evals/runner.py --suite <suite> --model ornith:latest` when more scores are needed.
-- Add stricter graders or new JSON suite files as evaluation needs evolve.
+- For more scores, run `python3 evals/runner.py --suite <suite> --model ornith:latest` or `--suite all`.
+- Consider iterative repair evals for programming, and stricter Kerala/Malayalam suites if local-language performance matters.
 - Keep caches ignored and commit future durable eval results/reports intentionally.
